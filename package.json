@@ -1,5 +1,5 @@
 {
-  "name": "Node_blog_V2",
+  "name": "blog",
   "version": "0.2.0",
   "description": "A koa-nodejs blog develop framework.",
   "main": "app.js",
@@ -21,11 +21,11 @@
   "bugs": {
     "url": "https://github.com/flex1988/Node_blog_V2/issues"
   },
-  "engines":{
-    "node":">=11.3"
+  "engines": {
+    "node": "0.11.4"
   },
-  "dependencies":{
-    "koa":"*",
+  "dependencies": {
+    "koa": "*",
     "koa-static-cache": "*",
     "koa-logger": "*",
     "co": "*",
@@ -36,5 +36,6 @@
     "xss": "*",
     "mongoose": "*",
     "underscore": "^1.6.0"
-  }
+  },
+  "devDependencies": {}
 }
