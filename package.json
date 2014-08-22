@@ -20,5 +20,21 @@
   "license": "BSD",
   "bugs": {
     "url": "https://github.com/flex1988/Node_blog_V2/issues"
+  },
+  "engines":{
+    "node":">=11.3"
+  },
+  "dependencies":{
+    "koa":"*",
+    "koa-static-cache": "*",
+    "koa-logger": "*",
+    "co": "*",
+    "co-fs": "*",
+    "co-body": "*",
+    "co-views": "*",
+    "swig": "*",
+    "xss": "*",
+    "mongoose": "*",
+    "underscore": "^1.6.0"
   }
 }
