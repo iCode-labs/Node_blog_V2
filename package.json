@@ -1,0 +1,24 @@
+{
+  "name": "Node_blog_V2",
+  "version": "0.2.0",
+  "description": "A koa-nodejs blog develop framework.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flex1988/Node_blog_V2.git"
+  },
+  "keywords": [
+    "nodejs",
+    "koa",
+    "MVC",
+    "blog"
+  ],
+  "author": "flex",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/flex1988/Node_blog_V2/issues"
+  }
+}
