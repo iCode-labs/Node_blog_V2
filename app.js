@@ -1,0 +1,1 @@
+require(__dirname+'/main')(__dirname,__dirname+'/main');

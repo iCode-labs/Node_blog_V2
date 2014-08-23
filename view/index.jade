@@ -1,0 +1,15 @@
+extends ./common/layout
+block content
+	div(class='row wrapper')
+		div(class='col-xs-14')
+			div(class='content')
+				if(articles)
+					for item in articles
+						div(class='blog_row')
+							div(class='blog_top')
+								h5(class='blog_title' href='') #{item.title}
+									img(src='images/avatar/default.jpg' class='user_avatar')
+							div(class='blog_content')
+								p !{item.body}
+							div(class='blog_btm')
+	include common/footer

@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title #{config.webtitle} | #{title} 
+    meta(content='text/html;charset=utf-8',http-equiv='Content-Type')
+    meta(name="author",content="flex")
+    meta(name='viewport' content='width=1000, initial-scale=1.0, maximum-scale=1.0')
+    link(rel='stylesheet',href='/bootstrap/css/bootstrap.css')
+    link(rel='stylesheet',href='/css/flat-ui.css')
+    link(rel='stylesheet',href='/css/blog.css')
+    link(rel='icon',href='/images/favicon.ico',type='image/x-icon')
+  body
+    include topbar
+    block content
