@@ -1,21 +1,13 @@
 {
-<<<<<<< HEAD
   "name": "blog",
   "version": "0.2.0",
   "description": "A koa-nodejs blog develop framework.",
-=======
   "name": "jd_node_base",
   "version": "0.0.1",
   "description": "a sample node.js app for jae",
->>>>>>> 4e6a6c7beef43de9f86640a810ce29e09909be9d
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-<<<<<<< HEAD
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/flex1988/Node_blog_V2.git"
   },
   "keywords": [
     "nodejs",
@@ -25,12 +17,6 @@
   ],
   "author": "flex",
   "license": "BSD",
-  "bugs": {
-    "url": "https://github.com/flex1988/Node_blog_V2/issues"
-  },
-  "engines": {
-    "node": "0.11.4"
-  },
   "dependencies": {
     "koa": "*",
     "koa-static-cache": "*",
@@ -46,27 +32,12 @@
     "jade":"*",
     "koa-session":"*"
   },
-  "devDependencies": {}
-=======
-  "dependencies": {
-    "http-client": "~1.0.0"
-  },
   "engines": {
-    "node": "0.10.13",
+    "node": "0.11.4",
     "npm": "1.3.2"
   },
   "repository": {
     "type": "git",
     "url": "git://code.jd.com/jdappengine/jd_node_base_1.git"
-  },
-  "keywords": [
-    "node",
-    "jae"
-  ],
-  "author": "jae",
-  "license": "BSD",
-  "gitHead": "a4c182a5121aa047e62f13be1135e6fb309dae4f",
-  "devDependencies": {},
-  "optionalDependencies": {}
->>>>>>> 4e6a6c7beef43de9f86640a810ce29e09909be9d
+  }
 }
