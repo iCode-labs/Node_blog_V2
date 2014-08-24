@@ -1,6 +1,6 @@
 module.exports=function(root){
 	return{
-		mongodb:'mongodb://127.0.0.1:27017/blogdb',
+		mongodb:'mongodb://hQ9us9bN:Gg55pUUsVPMU@10.0.31.20,10.0.31.21:27017/flywisp0_mongo_uudxo9du',
 		model:root+'/model/',
 		view:root+'/view/',
 		controller:root+'/controller/',
