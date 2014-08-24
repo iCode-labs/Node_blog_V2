@@ -1,0 +1,16 @@
+extends ./layout
+block content
+	div(class='row wrapper')
+	include ./footer
+	script(type='text/javascript').
+		var second = #{second};
+		var url = '#{url}';
+		var msg='#{msg}';
+		var d=dialog({
+		title:'提醒',
+		content:msg+'</br>页面将在#{second}秒后跳转。'
+		});
+		d.show();
+		setTimeout(function(){
+		    window.location.href=url;
+		},second*1000)

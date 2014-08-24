@@ -24,8 +24,8 @@ module.exports=function(root){
 		    {text:'注销',href:'/logout'}
 		    ],
 		    guestfuncs:[
-		    {text:'登陆',href:'/login'},
-		    {text:'注册',href:'/register'}
+		    {text:'登陆',href:'/auth/auth/login'},
+		    {text:'注册',href:'/auth/auth/register'}
 		    ]
 		}
 	}

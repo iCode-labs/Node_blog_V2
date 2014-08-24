@@ -42,7 +42,11 @@ body
   padding: 18px 20px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
-.content li{border-bottom:3px solid #eee;padding-bottom:10px;margin-bottom:10px}
+.content li{
+  border-bottom:3px solid #eee;
+  padding-bottom:10px;
+  margin-bottom:10px
+}
 .blog_top {
   font-size: 14px;
   line-height: 100%;
@@ -219,9 +223,7 @@ a{
   text-decoration: none;#c3c6c9
 }
 .wrapper{
-  margin:auto; 
   max-width: 1000px;
-  margin-top: 60px;
 }
 .search-button{
   background-color: #34495e;
@@ -269,12 +271,18 @@ border-radius:5px;}
   width:400px;
   height: 250px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 20%;
   vertical-align: center;
   background-color: #2980B9;
 }
 .navbar_config{
   margin-top: 150px;
+}
+
+.msg_panel{
+
+  height: 700px;
+  clear: both;
 }
 
 
