@@ -18,19 +18,20 @@
   "author": "flex",
   "license": "BSD",
   "dependencies": {
-    "koa": "*",
+    "koa": "~0.2.0",
+    "koa-mount":"~1.2.3",
     "koa-static-cache": "*",
     "koa-logger": "*",
     "co": "*",
     "co-fs": "*",
     "co-body": "*",
     "co-views": "*",
-    "swig": "*",
     "xss": "*",
     "mongoose": "*",
     "underscore": "^1.6.0",
     "jade":"*",
-    "koa-session":"*"
+    "koa-session":"*",
+    "koa-router":"~3.0.0"
   },
   "engines": {
     "node": "0.11.4",
