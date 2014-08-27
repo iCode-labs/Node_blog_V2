@@ -1,1 +1,1 @@
-require(__dirname+'/main')(__dirname,__dirname+'/main');
+require(__dirname+'/main/index.js')(__dirname,__dirname+'/main/');
