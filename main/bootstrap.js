@@ -17,7 +17,10 @@ var koa=require('koa'),
 	app.use(staticCache(path.join(root,'public'),{
 		maxAge:365*24*60*60
 	}));
+	//连接mongodb
+	mongoose.connect('mongodb://local:27017/blogdatabase');
 	app.use(session());
+	app.use(logger());
 	app.keys=[userconfig.secret];
 	//路由分发
 	app.use(mount(configRouter));

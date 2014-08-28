@@ -17,15 +17,15 @@ module.exports=function(root){
 		    ],
 		    guestnavs:[
 		    {text:'最新',href:'/newblogs'},
-		    {text:'精华',href:'/'}
+		    {text:'精华',href:'/essen'}
 		    ],
 		    userfuncs:[
-		    {text:'个人信息',href:'/'},
+		    {text:'个人信息',href:'/personInfo'},
 		    {text:'注销',href:'/logout'}
 		    ],
 		    guestfuncs:[
-		    {text:'登陆',href:'/auth/auth/login'},
-		    {text:'注册',href:'/auth/auth/register'}
+		    {text:'登陆',href:'/login'},
+		    {text:'注册',href:'/register'}
 		    ]
 		}
 	}
