@@ -4,7 +4,7 @@ module.exports=function(config,render){
 			this.body=yield render('index',{
 				config:config.template,
 				title:'首页',
-				pageData:{is_login:this.session.is_login}
+				pageData:this.session
 			});
 		}
 	}

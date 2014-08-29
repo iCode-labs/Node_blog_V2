@@ -31,7 +31,8 @@
     "underscore": "^1.6.0",
     "jade":"*",
     "koa-session":"*",
-    "koa-router":"~3.0.0"
+    "koa-router":"~3.0.0",
+    "bluebird":"2.3.2"
   },
   "engines": {
     "node": "0.11.4",
