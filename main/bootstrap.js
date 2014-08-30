@@ -23,13 +23,10 @@ var koa=require('koa'),
 		maxAge:365*24*60*60
 	}));
 	app.use(function*(next){
-		var path=this.url;
-		var array=path.split('.'); 
-		console.log(this);
-		console.log(array[array.length-1]);
-		console.log(array.length);
+		var array=this.url.split('.'); 
 		if(array.length>1){
-			var contentType = mime[array[array.length-1]];
+			var index=array.length-1;
+			var contentType = mime[array[index]];
 			console.log(contentType);
 			this.response.header.Content-Type=contentType;
 		}
