@@ -17,14 +17,20 @@ module.exports=function(config){
 	});
 	//加载controller
 	var index=require(config.controller+'/index.js')(config,render,parse),
-		auth=require(config.controller+'/auth.js')(config,render,parse);
+		auth=require(config.controller+'/auth.js')(config,render,parse),
+		common=require(config.controller+'/common.js')(config,render,parse),
+		blog=require(config.controller+'/blog.js')(config,render,parse);
 	
 	require('./common/dataSeed.js')();
+	Router.redirect('/home','/');
 	Router.get('/',index.index);
 	Router.get('/login',auth.login);
 	Router.get('/register',auth.register);
 	Router.post('/login',auth.onlogin);
+	Router.get('/logout',auth.logout);
+	Router.get('/create',blog.create);
 	app.use(Router.middleware());
+	app.use(common.notFound);
 	return app;
 }	
 

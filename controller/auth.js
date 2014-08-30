@@ -20,7 +20,6 @@ module.exports=function(config,render,parse){
 
 	return {
 		login:function*(next){
-			console.log(Functions);
 			this.body=yield render('auth/login',{
 				config:config.template,
 				title:'用户登录',
@@ -55,6 +54,10 @@ module.exports=function(config,render,parse){
 			}
 			
 		},
+		logout:function*(next){
+			this.session=null;
+			this.redirect('/');
+		}
 		
 	}
 }

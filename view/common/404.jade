@@ -1,0 +1,13 @@
+extends ./layout
+block content
+	div(class='row wrapper')
+	include ./footer
+	script(type='text/javascript').
+		var d=dialog({
+		title:'404',
+		content:'404NotFound,找不到请求的链接,页面将在4秒后跳转。'
+		});
+		d.showModal();
+		setTimeout(function(){
+		    window.location.href=url;
+		},4*1000)

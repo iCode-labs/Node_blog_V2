@@ -231,10 +231,9 @@ a{
 .navbar-inverse{
   border-radius: 0px;
 }
-.header{color: #fff;font-size: 14px;text-align: center;padding: 5px 0px 0px 0px;background-color:#34495e;height:40px;border:2px solid;
+.header{
+color: #fff;font-size: 14px;text-align: center;padding: 5px 0px 0px 0px;background-color:#34495e;height:40px;border:2px solid;
 border-radius:5px;}
-/* --Wrapper-- */
-
 .content{
   margin-bottom:90px;
   margin-top: -6px;
@@ -243,12 +242,7 @@ border-radius:5px;}
   max-width: 1000px;
   position: relative;
 }
-
-/* --Content 元素-- */
 .content h1 strong{font-size: 12px;color: #fff;background-color: #4d5363;margin: -10px 0px 0px 0px;padding: 4px 10px;float: right;border-radius: 5px;}
-
-
-/* --Footer-- */
 .footer{clear:both;width:100%;position:absolute;bottom:0;
   height:80px;
   color: #fff;padding: 20px 0px 0px 0px;text-align: center;
@@ -259,7 +253,6 @@ border-radius:5px;}
   font-size: 13px;
   color: #fff;
 }
-
 .dark{
   overflow:hidden;
   text-overflow:ellipsis;
@@ -278,11 +271,15 @@ border-radius:5px;}
 .navbar_config{
   margin-top: 150px;
 }
-
 .msg_panel{
-
   height: 700px;
   clear: both;
+}
+.editor-wrapper{
+  max-width: 1000px;
+  margin: 54px auto;
+  padding: 10px;
+  background-color: #ECF0F1;
 }
 
 

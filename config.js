@@ -13,7 +13,7 @@ module.exports=function(root){
 		    {text:'最新',href:'/newblogs'},
 		    {text:'精华',href:'/'},
 		    {text:'我的博客',href:'/myblogs'},
-		    {text:'发表',href:'/editblog'},
+		    {text:'发表',href:'/create'},
 		    ],
 		    guestnavs:[
 		    {text:'最新',href:'/newblogs'},

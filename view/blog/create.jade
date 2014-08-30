@@ -1,0 +1,10 @@
+extends ../common/layout
+block content
+	div(class='container')
+		div(class='editor-wrapper')
+			input(class='title' type='text' placeholder='title')
+			textarea(class='blog_editor')
+	include ../common/footer
+	script.
+		var editor=new Editor();
+		editor.render();
