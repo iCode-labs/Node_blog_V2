@@ -28,7 +28,7 @@ var koa=require('koa'),
 			var index=array.length-1;
 			var contentType = mime[array[index]];
 			console.log(contentType);
-			this.response.header.Content-Type=contentType;
+			this.set("Content-Type",contentType);
 		}
 		console.log(this);
 		yield next;
