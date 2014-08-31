@@ -26,7 +26,7 @@ module.exports = function(config, render, parse) {
 				blog.blog_title = blogdata.blogtitle;
 				blog.blog_content = blogdata.blogcontent;
 				blog.is_active = true;
-				blog.author_id = this.session.user._id;
+				blog.author_id = '';
 				blog.author_name = this.session.user.user_name;
 				blog.save();
 				this.body = {
