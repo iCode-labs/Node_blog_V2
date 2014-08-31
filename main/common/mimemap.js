@@ -17,7 +17,7 @@ exports.types = {
   "wma": "audio/x-ms-wma",
   "wmv": "video/x-ms-wmv",
   "xml": "text/xml",
-  "woff":"application/font-woff",
-  "ttf":"application/font-ttf",
-  "svg":"application/font-svg"
+  "woff": "application/font-woff",
+  "ttf": "application/font-ttf",
+  "svg": "application/font-svg"
 };
