@@ -1,15 +1,13 @@
 extends ./common/layout
 block content
-	div(class='row wrapper')
+	div(class='container')
 		div(class='content')
-			if(articles)
-				for item in articles
-					div(class='blog_row')
-						div(class='blog_top')
-							h5(class='blog_title' href='') #{item.title}
-								img(src='images/avatar/default.jpg' class='user_avatar')
-						div(class='blog_content')
-							p !{item.body}
-						div(class='blog_btm')
+			div(id='leftbar')
+			div(id='rightbar')
+			div(id='main')
+				div(class='blog_row')
+					div(class='blog_top')
+					div(class='blog_content')
+					div(class='blog_btm')
 	include common/footer
 	
