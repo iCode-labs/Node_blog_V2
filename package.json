@@ -31,7 +31,8 @@
     "jade": "*",
     "koa-session": "*",
     "koa-router": "~3.0.0",
-    "marked": "*"
+    "marked": "*",
+    "moment": "2.8.2"
   },
   "engines": {
     "node": "0.11.4",

@@ -3,8 +3,14 @@ module.exports = function(config, render, parse) {
 		Blog = mongoose.model('Blog'),
 		base64 = require(config.mainpath + 'common/base64.js'),
 		underscore = require('underscore'),
-		marked = require('marked');
+		marked = require('marked'),
+		moment = require('moment');
 	var showMsg = require(config.mainpath + '/common/showMsg.js');
+
+	var longth = function(epoch) {
+		var diff = Date.now() - parseInt(epoch, 10);
+		return moment.duration(diff).humanize() + ' ago';
+	};
 	return {
 		create: function * (next) {
 			this.body = yield render('blog/create', {
@@ -38,15 +44,23 @@ module.exports = function(config, render, parse) {
 		},
 		getnews: function * (next) {
 			var blogs = yield Blog.getLatestPosts();
+			var bloglist = new Array();
 			blogs.forEach(function(item) {
-				item.blog_content = marked(item.blog_content);
+				var blog = {
+					blog_title: item.blog_title,
+					blog_content: marked(item.blog_content),
+					blog_longth: longth(item.date_created.getTime()),
+					author_name: item.author_name,
+					blog_tags: item.blog_tags
+				};
+				bloglist.push(blog);
 			});
-			console.log(blogs);
+			console.log(bloglist);
 			this.body = yield render('index', {
 				config: config.template,
 				title: '最新文章',
 				pageData: this.session,
-				articles: blogs
+				articles: bloglist
 			});
 		}
 	}
