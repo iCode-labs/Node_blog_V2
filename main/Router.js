@@ -20,16 +20,18 @@ module.exports = function(config) {
 		auth = require(config.controller + '/auth.js')(config, render, parse),
 		common = require(config.controller + '/common.js')(config, render, parse),
 		blog = require(config.controller + '/blog.js')(config, render, parse);
-
+	//初始化数据库
 	require('./common/dataSeed.js')(config);
-	Router.redirect('/home', '/');
-	Router.get('/', index.index);
+	//配置路由监听
+	Router.redirect('/home', '/newblogs');
+	Router.redirect('/', '/newblogs');
 	Router.get('/login', auth.login);
 	Router.get('/register', auth.register);
 	Router.post('/login', auth.onlogin);
 	Router.get('/logout', auth.logout);
 	Router.get('/create', blog.create);
 	Router.post('/create', blog.oncreate);
+	Router.get('/newblogs', blog.getnews);
 	app.use(Router.middleware());
 	app.use(common.notFound);
 	return app;

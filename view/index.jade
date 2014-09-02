@@ -5,9 +5,18 @@ block content
 			div(id='leftbar')
 			div(id='rightbar')
 			div(id='main')
-				div(class='blog_row')
-					div(class='blog_top')
-					div(class='blog_content')
-					div(class='blog_btm')
+				if(articles)
+					for item in articles
+						div(class='blog_row')
+							div(class='blog_top')
+								span(class='blog_title')
+									a(href='') #{item.blog_title}
+							div(class='blog_content')
+								p !{item.blog_content}
+							div(class='blog_btm')
+								ul
+									a(href='' id='blog_author') #{item.author_name}
+									a(href='' id='blog_commit') 评论（0）
+									a(href='' id='blog_date') 发表时间
 	include common/footer
 	

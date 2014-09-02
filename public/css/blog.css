@@ -45,13 +45,12 @@ body
 .blog_top {
   font-size: 14px;
   line-height: 100%;
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 5px;
-  float: left;
   width: 600px;
-  padding-top: 0px;
-  padding-bottom: 10px;
+  height: 50px;
+  padding: 10px;
+  text-align: left;
+  margin-left: 50px;
+  padding-top: 20px;
 }
 
 .blog_top img {
@@ -67,7 +66,7 @@ body
   box-shadow: 0 0 8px hsla(350, 89%, 48%, 0.69);
 }
 .blog_top a {
-  color: #9b8878;
+  color: #2C3E50;
 }
 .blog_top h6{
   margin: 0 auto;
@@ -75,65 +74,41 @@ body
 .blog_top a:hover {
   color: #300;
 }
-
 .blog_title{
-  width: 600px;
-  height: 40px;
-  max-width: 100%;
-  margin-left: 40px;
-  color:#330019 !important;
-  font-weight: 600;
-  line-height: 40px;
+  font-size: 22px;
 }
-
 .blog_content {
-  word-break: break-all;
-  line-height: 160%;
-  text-indent:40px;
-  padding-left: 40px;
-  padding-right: 40px;
-  clear: both;
+  padding: 20px;
+  margin:0px 30px 0px 30px;
 }
 
 .blog_content p{
    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .blog_btm {
-  margin: 15px 0 0 0;
-  height: 30px;
-  font-size: 12px;
+  height: 50px;
+  font-size: 13px;
 }
 
 .blog_btm ul{
   list-style-type: none;
 }
-.blog_btm ul li {
+
+
+#blog_commit{
   float: left;
+  padding: 15px;
+  margin-right: 10%;
 }
-
-.blog_btm ul li a {
-  display: block;
-  height: 28px;
-  line-height: 30px;
-  margin-right: 10px;
-  text-indent: 20px;
-  color: #BEBEBE;
-  width: 80px;
-  font-weight: 500;
-}
-
-.blog_btm ul li a:hover {
-  color: #9e8c7b;
-}
-
-.blog_btm_comm {
-  float: right;
-  margin: 0;
-  padding: 0;
-}
-
-.blog_btm_comm li {
+#blog_author{
   float: left;
+  padding: 15px;
+  margin-right: 10%;
+}
+#blog_date{
+  float: left;
+  padding: 15px;
+  margin-right: 10%;
 }
 .btm_pagbar{
   clear: both;
@@ -183,9 +158,9 @@ border-radius:5px;
 }
 
 .content{
-  margin: 70px auto 90px auto;
+  margin: 70px auto 100px auto;
   position: relative;
-  height: 500px;
+  min-height: 500px;
   border-radius: 2px;
 }
 .content h1 strong{
@@ -201,11 +176,11 @@ border-radius:5px;
   height:80px;
   width: 100%;
   color: #fff;
-  bottom: 0;
-  position: absolute;
   padding: 20px 0px 0px 0px;
   text-align: center;
   background-color:#34495e;
+  position: fixed; 
+  bottom: 0;
 }
 .footer b{
   font-weight: normal;

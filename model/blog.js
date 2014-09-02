@@ -44,5 +44,13 @@ module.exports = function(config) {
 			default: Date.now
 		}
 	});
+	BlogSchema.statics.getLatestPosts = function() {
+		return this
+			.find()
+			.sort('field -date_created')
+			.limit(10)
+			.find()
+			.exec();
+	};
 	mongoose.model('Blog', BlogSchema);
 }

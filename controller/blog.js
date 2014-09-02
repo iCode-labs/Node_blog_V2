@@ -1,7 +1,9 @@
 module.exports = function(config, render, parse) {
 	var mongoose = require('mongoose'),
 		Blog = mongoose.model('Blog'),
-		base64 = require(config.mainpath + 'common/base64.js');
+		base64 = require(config.mainpath + 'common/base64.js'),
+		underscore = require('underscore'),
+		marked = require('marked');
 	var showMsg = require(config.mainpath + '/common/showMsg.js');
 	return {
 		create: function * (next) {
@@ -13,12 +15,12 @@ module.exports = function(config, render, parse) {
 		},
 		oncreate: function * (next) {
 			var blogdata = yield parse(this);
-			if (Functions.isNull(this.session.user)) {
+			if (underscore.isNull(this.session.user)) {
 				var params = {
 					title: '提示',
 					msg: '请先登录',
 					url: '/login',
-					second: 3
+					second: 2
 				};
 				this.body = yield showMsg(params, this.session, config, render);
 			} else {
@@ -33,6 +35,19 @@ module.exports = function(config, render, parse) {
 					isSuccess: true
 				};
 			}
+		},
+		getnews: function * (next) {
+			var blogs = yield Blog.getLatestPosts();
+			blogs.forEach(function(item) {
+				item.blog_content = marked(item.blog_content);
+			});
+			console.log(blogs);
+			this.body = yield render('index', {
+				config: config.template,
+				title: '最新文章',
+				pageData: this.session,
+				articles: blogs
+			});
 		}
 	}
 }

@@ -7,7 +7,6 @@ module.exports = function(root, mainpath) {
 		path = require('path'),
 		parse = require('co-body'),
 		mongoose = require('mongoose'),
-		Promise = require('bluebird'),
 		underscore = require('underscore'),
 		logger = require('koa-logger'),
 		session = require('koa-session'),
@@ -16,8 +15,6 @@ module.exports = function(root, mainpath) {
 		userconfig = require(root + '/config')(root),
 		configRouter = require('./Router.js')(userconfig),
 		mime = require('./common/mimemap.js').types;
-	Functions = underscore;
-
 	//设置静态文件路径
 	app.use(staticCache(path.join(root, 'public'), {
 		maxAge: 365 * 24 * 60 * 60

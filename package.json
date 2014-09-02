@@ -19,20 +19,19 @@
   "license": "BSD",
   "dependencies": {
     "koa": "~0.2.0",
-    "koa-mount":"~1.2.3",
+    "koa-mount": "~1.2.3",
     "koa-static-cache": "*",
     "koa-logger": "*",
     "co": "*",
     "co-fs": "*",
     "co-body": "*",
     "co-views": "*",
-    "xss": "*",
     "mongoose": "*",
     "underscore": "^1.6.0",
-    "jade":"*",
-    "koa-session":"*",
-    "koa-router":"~3.0.0",
-    "bluebird":"2.3.2"
+    "jade": "*",
+    "koa-session": "*",
+    "koa-router": "~3.0.0",
+    "marked": "*"
   },
   "engines": {
     "node": "0.11.4",

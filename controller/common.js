@@ -18,7 +18,7 @@ module.exports = function(config, render, parse) {
 	};
 	return {
 		notFound: function * (next) {
-			this.body = yield showMsg('404', '找不到请求的页面', '/', 4, this.session);
+			this.body = yield showMsg('404', '找不到请求的页面', '/', 2, this.session);
 		}
 	}
 }
