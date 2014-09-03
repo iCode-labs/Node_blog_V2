@@ -73,7 +73,7 @@ module.exports = function(config, render, parse) {
 				blog_title: blog.blog_title,
 				blog_longth: longth(blog.date_created.getTime()),
 				author_name: blog.author_name,
-				blog_content: blog.blog_content,
+				blog_content: marked(blog.blog_content),
 				blog_tags: blog.blog_tags
 			};
 			if (!underscore.isNull(blog)) {

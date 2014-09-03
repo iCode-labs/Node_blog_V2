@@ -21,7 +21,7 @@ module.exports = function(config) {
 		common = require(config.controller + '/common.js')(config, render, parse),
 		blog = require(config.controller + '/blog.js')(config, render, parse);
 	//初始化数据库
-	require('./common/dataSeed.js')(config);
+	require('./common/dataseed.js')(config);
 	//配置路由监听
 	router.redirect('/home', '/newblogs');
 	router.redirect('/', '/newblogs');
