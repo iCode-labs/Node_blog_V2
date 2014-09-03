@@ -4,7 +4,8 @@ module.exports = function(config, render, parse) {
 		base64 = require(config.mainpath + 'common/base64.js'),
 		underscore = require('underscore'),
 		marked = require('marked'),
-		moment = require('moment');
+		moment = require('moment'),
+		ObjectId = mongoose.ObjectId;
 	var showMsg = require(config.mainpath + '/common/showMsg.js');
 
 	var longth = function(epoch) {
@@ -47,8 +48,8 @@ module.exports = function(config, render, parse) {
 			var bloglist = new Array();
 			blogs.forEach(function(item) {
 				var blog = {
+					blogId: item._id,
 					blog_title: item.blog_title,
-					blog_content: marked(item.blog_content),
 					blog_longth: longth(item.date_created.getTime()),
 					author_name: item.author_name,
 					blog_tags: item.blog_tags
@@ -62,6 +63,27 @@ module.exports = function(config, render, parse) {
 				pageData: this.session,
 				articles: bloglist
 			});
+		},
+		getblog: function * (next) {
+			var blog = yield Blog.findOne({
+				"_id": this.params.id
+			}).exec();
+			var resblog = {
+				blogId: blog._id,
+				blog_title: blog.blog_title,
+				blog_longth: longth(blog.date_created.getTime()),
+				author_name: blog.author_name,
+				blog_content: blog.blog_content,
+				blog_tags: blog.blog_tags
+			};
+			if (!underscore.isNull(blog)) {
+				this.body = yield render("/blog/article", {
+					config: config.template,
+					title: resblog.blog_title,
+					blog: resblog,
+					pageData: this.session
+				});
+			}
 		}
 	}
 }

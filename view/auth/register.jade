@@ -1,12 +1,13 @@
 extends ../common/layout
 block content
-  div(class='container')
-    form(class='login-form form-horizontal',action='/register/invite',method='post')
-      div(class='form-group')
-        input(type='text' class='form-control login-field' name='email' value='' placeholder='注册邮箱' id='_account')
-        label(class='login-field-icon fui-user' for='login-name')
-      div(class='form-group')
-        input(type='text' class='form-control login-field' name='nickname' value='' placeholder='昵称' id='_password')
-        label(class='login-field-icon fui-lock' for='login-pass')
-      button(class='btn btn-info btn-lg btn-block' type='submit') 注册
+  div(id='bodycontainer')
+    div(class='container')
+      form(class='login-form form-horizontal',action='/register/invite',method='post')
+        div(class='form-group')
+          input(type='text' class='form-control login-field' name='email' value='' placeholder='注册邮箱' id='_account')
+          label(class='login-field-icon fui-user' for='login-name')
+        div(class='form-group')
+          input(type='text' class='form-control login-field' name='nickname' value='' placeholder='昵称' id='_password')
+          label(class='login-field-icon fui-lock' for='login-pass')
+        button(class='btn btn-info btn-lg btn-block' type='submit') 注册
   include ../common/footer

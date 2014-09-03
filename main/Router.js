@@ -5,7 +5,7 @@ module.exports = function(config) {
 		views = require('co-views'),
 		fs = require('fs'),
 		parse = require('co-body'),
-		Router = new router();
+		router = new router();
 	//渲染模板函数
 	var render = views(config.view, {
 		default: 'jade'
@@ -23,16 +23,17 @@ module.exports = function(config) {
 	//初始化数据库
 	require('./common/dataSeed.js')(config);
 	//配置路由监听
-	Router.redirect('/home', '/newblogs');
-	Router.redirect('/', '/newblogs');
-	Router.get('/login', auth.login);
-	Router.get('/register', auth.register);
-	Router.post('/login', auth.onlogin);
-	Router.get('/logout', auth.logout);
-	Router.get('/create', blog.create);
-	Router.post('/create', blog.oncreate);
-	Router.get('/newblogs', blog.getnews);
-	app.use(Router.middleware());
+	router.redirect('/home', '/newblogs');
+	router.redirect('/', '/newblogs');
+	router.get('/login', auth.login);
+	router.get('/register', auth.register);
+	router.post('/login', auth.onlogin);
+	router.get('/logout', auth.logout);
+	router.get('/create', blog.create);
+	router.post('/create', blog.oncreate);
+	router.get('/newblogs', blog.getnews);
+	router.get('/blog/:id', blog.getblog);
+	app.use(router.middleware());
 	app.use(common.notFound);
 	return app;
 }

@@ -1,0 +1,19 @@
+extends ../common/layout
+block content
+	div(id='bodycontainer')
+		div(id='content')
+			div(id='leftbar')
+			div(id='rightbar')
+			div(id='main')
+				div(id='article')
+					div(class='blog_top')
+						span(class='blog_title')
+							a(href='') #{blog.blog_title}
+					div(class='blog_btm')
+						ul
+							a(id='blog_author') #{blog.author_name}
+							a(id='blog_commit') 评论（0）
+							a(id='blog_date') #{blog.blog_longth}
+					div(class='blog_content') !{blog.blog_content}
+				
+	include ../common/footer

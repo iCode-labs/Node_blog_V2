@@ -13,7 +13,7 @@ module.exports = function(root, mainpath) {
 		router = require('koa-router'),
 		mount = require('koa-mount'),
 		userconfig = require(root + '/config')(root),
-		configRouter = require('./Router.js')(userconfig),
+		configRouter = require('./router.js')(userconfig),
 		mime = require('./common/mimemap.js').types;
 	//设置静态文件路径
 	app.use(staticCache(path.join(root, 'public'), {

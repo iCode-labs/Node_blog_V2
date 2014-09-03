@@ -1,7 +1,7 @@
 extends ./common/layout
 block content
-	div(class='container')
-		div(class='content')
+	div(id='bodycontainer')
+		div(id='content')
 			div(id='leftbar')
 			div(id='rightbar')
 			div(id='main')
@@ -10,13 +10,12 @@ block content
 						div(class='blog_row')
 							div(class='blog_top')
 								span(class='blog_title')
-									a(href='') #{item.blog_title}
-							div(class='blog_content')
-								p !{item.blog_content}
+									a(href='blog/#{item.blogId}') #{item.blog_title}
 							div(class='blog_btm')
 								ul
 									a(href='' id='blog_author') #{item.author_name}
+									a(href='' id='blog_commit') 浏览（0）
 									a(href='' id='blog_commit') 评论（0）
-									a(href='' id='blog_date') 发表时间   #{item.blog_longth}
+									a(id='blog_date') #{item.blog_longth}
 	include common/footer
 	

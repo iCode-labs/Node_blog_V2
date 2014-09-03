@@ -29,6 +29,9 @@ module.exports = function(root) {
 			}, {
 				text: '精华',
 				href: '/essen'
+			}, {
+				text: '分类',
+				href: '/'
 			}],
 			userfuncs: [{
 				text: '个人信息',
