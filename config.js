@@ -1,6 +1,6 @@
 module.exports = function(root) {
 	return {
-		mongodb: 'mongodb://',
+		mongodb: 'mongodb://Air.local:27017/blogdatabase',
 		model: root + '/model/',
 		view: root + '/view/',
 		controller: root + '/controller/',

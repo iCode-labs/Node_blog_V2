@@ -1,5 +1,4 @@
 module.exports = function(root, mainpath) {
-	global.Functions = {};
 	var koa = require('koa'),
 		staticCache = require('koa-static-cache'),
 		app = koa(),
@@ -30,7 +29,7 @@ module.exports = function(root, mainpath) {
 		yield next;
 	});
 	//连接mongodb
-	mongoose.connect('mongodb://Air.local:27017/blogdatabase');
+	mongoose.connect(userconfig.mongodb);
 	app.use(session());
 	app.use(logger());
 	app.keys = [userconfig.secret];
