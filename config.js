@@ -8,44 +8,30 @@ module.exports = function(root) {
 		secret: '1234!@#$',
 		port: 8080,
 		template: {
-			webtitle: 'Notes',
+			webtitle: 'rain\'blog',
 			articlesperpage: 5,
 			usernavs: [{
 				text: '最新',
 				href: '/newblogs'
 			}, {
-				text: '精华',
-				href: '/'
+				text: 'Web',
+				href: '/web'
 			}, {
-				text: '我的博客',
-				href: '/myblogs'
+				text: '游戏',
+				href: '/game'
 			}, {
 				text: '发表',
 				href: '/create'
-			}, ],
+			}],
 			guestnavs: [{
 				text: '最新',
 				href: '/newblogs'
 			}, {
-				text: '精华',
-				href: '/essen'
+				text: 'Web',
+				href: '/web'
 			}, {
-				text: '分类',
-				href: '/'
-			}],
-			userfuncs: [{
-				text: '个人信息',
-				href: '/personInfo'
-			}, {
-				text: '注销',
-				href: '/logout'
-			}],
-			guestfuncs: [{
-				text: '登陆',
-				href: '/login'
-			}, {
-				text: '注册',
-				href: '/register'
+				text: '游戏',
+				href: '/game'
 			}]
 		}
 	}

@@ -13,9 +13,9 @@ block content
 									a(href='blog/#{item.blogId}') #{item.blog_title}
 							div(class='blog_btm')
 								ul
-									a(href='' id='blog_author') #{item.author_name}
-									a(href='' id='blog_commit') 浏览（0）
-									a(href='' id='blog_commit') 评论（0）
-									a(id='blog_date') #{item.blog_longth}
+									a(id='blog_author' class='fui-user')  #{item.author_name}
+									a(id='blog_commit' class='fui-eye')  浏览 0
+									a(id='blog_commit' class='fui-chat')  评论 0
+									a(id='blog_date' class='fui-time')  #{item.blog_longth}
 	include common/footer
 	

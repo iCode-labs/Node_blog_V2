@@ -2410,7 +2410,7 @@ select[multiple].navbar-form .btn {
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
   color: #1abc9c;
-  background-color: transparent;
+  background-color:#F1C40F;
 }
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,

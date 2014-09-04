@@ -1,4 +1,4 @@
-nav(class='navbar navbar-inverse navbar-fixed-top' role='navigation')
+nav(class='navbar-nav navbar-inverse navbar-fixed-top' role='navigation')
 	div(class='container')
 		div(class='navbar-header')
 			button(type='button' class='navbar-toggle' data-toggle='collapse' data-target='#navbar-collapse')
@@ -22,13 +22,3 @@ nav(class='navbar navbar-inverse navbar-fixed-top' role='navigation')
 						div(class='form-group')
 							div(class='input-group')
 								input(class='form-control' type='search' placeholder='搜索')
-								
-			ul(class='nav navbar-nav navbar-right')
-				if(pageData.is_login)
-					for item in config.userfuncs
-						li
-							a(href='#{item.href}') #{item.text}
-				else
-					for item in config.guestfuncs
-						li
-							a(href='#{item.href}') #{item.text}
