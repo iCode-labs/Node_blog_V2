@@ -14,8 +14,8 @@ block content
 							div(class='blog_btm')
 								ul
 									a(id='blog_author' class='fui-user')  #{item.author_name}
-									a(id='blog_commit' class='fui-eye')  浏览 0
-									a(id='blog_commit' class='fui-chat')  评论 0
+									a(id='blog_commit' class='fui-eye')  浏览 #{item.browse_times}
+									a(id='blog_commit' class='fui-chat')  评论 #{comment_times}
 									a(id='blog_date' class='fui-time')  #{item.blog_longth}
 	include common/footer
 	

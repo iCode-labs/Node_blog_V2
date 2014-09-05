@@ -12,8 +12,8 @@ block content
 					div(class='blog_btm')
 						ul
 							a(id='blog_author' class='fui-user')  #{blog.author_name}
-							a(id='blog_commit' class='fui-eye')   浏览 0
-							a(id='blog_commit' class='fui-chat')  评论 0
+							a(id='blog_commit' class='fui-eye')   浏览 #{blog.blog_browse}
+							a(id='blog_commit' class='fui-chat')  评论 #{blog.comment_times}
 							a(id='blog_date' class='fui-time')  #{blog.blog_longth}
 					div(class='blog_content') !{blog.blog_content}
 				

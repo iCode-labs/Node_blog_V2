@@ -52,11 +52,12 @@ module.exports = function(config, render, parse) {
 					blog_title: item.blog_title,
 					blog_longth: longth(item.date_created.getTime()),
 					author_name: item.author_name,
-					blog_tags: item.blog_tags
+					blog_tags: item.blog_tags,
+					browse_times: item.browse_times,
+					comment_times: item.comment_times
 				};
 				bloglist.push(blog);
 			});
-			console.log(bloglist);
 			this.body = yield render('index', {
 				config: config.template,
 				title: '最新文章',
@@ -70,6 +71,7 @@ module.exports = function(config, render, parse) {
 			}).exec();
 			blog.browse_times++;
 			blog.save();
+			console.log(blog);
 			var resblog = {
 				blogId: blog._id,
 				blog_title: blog.blog_title,
@@ -77,7 +79,8 @@ module.exports = function(config, render, parse) {
 				author_name: blog.author_name,
 				blog_content: marked(blog.blog_content),
 				blog_tags: blog.blog_tags,
-				blog_browse: blog.browse_times
+				blog_browse: blog.browse_times,
+				comment_times: blog.blog_comments.length
 			};
 			if (!underscore.isNull(blog)) {
 				this.body = yield render("/blog/article", {
