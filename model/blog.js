@@ -35,6 +35,14 @@ module.exports = function(config) {
 			type: Array,
 			default: []
 		},
+		blog_comments: {
+			type: Array,
+			default: []
+		},
+		browse_times: {
+			type: int,
+			default: 0
+		}
 		date_created: {
 			type: Date,
 			default: Date.now

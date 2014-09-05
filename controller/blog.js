@@ -68,13 +68,16 @@ module.exports = function(config, render, parse) {
 			var blog = yield Blog.findOne({
 				"_id": this.params.id
 			}).exec();
+			blog.browse_times++;
+			blog.save();
 			var resblog = {
 				blogId: blog._id,
 				blog_title: blog.blog_title,
 				blog_longth: longth(blog.date_created.getTime()),
 				author_name: blog.author_name,
 				blog_content: marked(blog.blog_content),
-				blog_tags: blog.blog_tags
+				blog_tags: blog.blog_tags,
+				blog_browse: blog.browse_times
 			};
 			if (!underscore.isNull(blog)) {
 				this.body = yield render("/blog/article", {
