@@ -8138,7 +8138,7 @@
   function postblog(editor) {
     var cm = editor.codemirror;
     var content = cm.getValue();
-    var title = $("#blog_title")[0].value;
+    var title = $("#blog_edit_title")[0].value;
     if ("" == content || "" == title) {
       var d = dialog({
         title: '不当的提交',
