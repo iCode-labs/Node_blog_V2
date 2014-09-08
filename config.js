@@ -14,11 +14,11 @@ module.exports = function(root) {
 				text: '最新',
 				href: '/newblogs'
 			}, {
-				text: 'Web',
-				href: '/web'
+				text: 'Node.js',
+				href: '/category/nodejs'
 			}, {
 				text: '游戏',
-				href: '/game'
+				href: '/category/game'
 			}, {
 				text: '发表',
 				href: '/create'
@@ -27,11 +27,11 @@ module.exports = function(root) {
 				text: '最新',
 				href: '/newblogs'
 			}, {
-				text: 'Web',
-				href: '/web'
+				text: 'Node.js',
+				href: '/category/nodejs'
 			}, {
 				text: '游戏',
-				href: '/game'
+				href: '/category/game'
 			}]
 		}
 	}

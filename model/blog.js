@@ -56,8 +56,16 @@ module.exports = function(config) {
 		return this
 			.find()
 			.sort('field -date_created')
-			.limit(10)
+			.limit(15)
 			.find()
+			.exec();
+	};
+	BlogSchema.statics.getCategoryPosts = function(category) {
+		return this
+			.find({
+				"blog_category": category
+			})
+			.sort('field -date_created')
 			.exec();
 	};
 	mongoose.model('Blog', BlogSchema);

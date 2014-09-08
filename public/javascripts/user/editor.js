@@ -8139,7 +8139,8 @@
     var cm = editor.codemirror;
     var content = cm.getValue();
     var title = $("#blog_edit_title")[0].value;
-    if ("" == content || "" == title) {
+    var category = $("#blog_category")[0].value;
+    if ("" == content || "" == title || "" == category) {
       var d = dialog({
         title: '不当的提交',
         content: '标题或者内容为空，请先完整标题或内容'
@@ -8151,7 +8152,8 @@
     } else {
       $.post("/create", {
         blogtitle: title,
-        blogcontent: content
+        blogcontent: content,
+        blogcategory: category
       }).success(function() {
         var d = dialog({
           title: '发表成功',

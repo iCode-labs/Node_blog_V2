@@ -214,3 +214,27 @@ html, body {
   width: 250;
 }
 
+#blog_commits {
+  width: 600px;
+  height: 50px;
+  text-align: left;
+  margin-left: 55px;
+  padding-top: 15px;
+}
+.panel{
+  margin: 0 auto;
+  font-size: 6px;
+  background-color: #FFF;
+  margin-top: 1px;
+  border-radius: 2px;
+}
+.blog_comment{
+}
+.comment > P{
+  width: 600px;
+  font-size: 16px;
+  margin-left: 50px;
+  text-align: left;
+  padding-top: 5px;
+  height: 20px;
+}

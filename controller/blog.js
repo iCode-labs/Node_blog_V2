@@ -31,12 +31,14 @@ module.exports = function(config, render, parse) {
 				};
 				this.body = yield showMsg(params, this.session, config, render);
 			} else {
+				console.log(blogdata);
 				var blog = new Blog();
 				blog.blog_title = blogdata.blogtitle;
 				blog.blog_content = blogdata.blogcontent;
 				blog.is_active = true;
 				blog.author_id = this.session.user._id;
 				blog.author_name = this.session.user.user_name;
+				blog.blog_category = blogdata.blogcategory;
 				blog.save();
 				this.body = {
 					isSuccess: true
@@ -90,6 +92,28 @@ module.exports = function(config, render, parse) {
 					pageData: this.session
 				});
 			}
+		},
+		getblogbycategory: function * (next) {
+			var blogs = yield Blog.getCategoryPosts(this.params.category);
+			var bloglist = new Array();
+			blogs.forEach(function(item) {
+				var blog = {
+					blogId: item._id,
+					blog_title: item.blog_title,
+					blog_longth: longth(item.date_created.getTime()),
+					author_name: item.author_name,
+					blog_tags: item.blog_tags,
+					browse_times: item.browse_times,
+					comment_times: item.comment_times
+				};
+				bloglist.push(blog);
+			});
+			this.body = yield render('/index', {
+				config: config.template,
+				title: this.params.category,
+				pageData: this.session,
+				articles: bloglist
+			});
 		}
 	}
 }

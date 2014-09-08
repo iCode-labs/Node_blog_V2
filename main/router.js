@@ -33,6 +33,7 @@ module.exports = function(config) {
 	router.post('/create', blog.oncreate);
 	router.get('/newblogs', blog.getnews);
 	router.get('/blog/:id', blog.getblog);
+	router.get('/category/:category', blog.getblogbycategory);
 	app.use(router.middleware());
 	app.use(common.notFound);
 	return app;
