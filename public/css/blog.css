@@ -1,10 +1,8 @@
 
 body
 {
-  padding: 0px;
-  margin: 0px;
   font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti !important;
-  background-color: #BDC3C7;
+  height: 100%;
 }
 .user_avatar{
   float: right;
@@ -123,10 +121,15 @@ a{
   border-radius: 0px;
 }
 .header{
-color: #fff;font-size: 14px;text-align: center;padding: 5px 0px 0px 0px;background-color:#34495e;height:40px;border:2px solid;
-border-radius:5px;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  padding: 5px 0px 0px 0px;
+  background-color:#34495e;
+  height:40px;
+  border:2px solid;
+  border-radius:5px;
 }
-
 .footer b{
   font-weight: normal;
   font-size: 13px;
@@ -174,6 +177,7 @@ border-radius:5px;
 
 #bodycontainer{
   min-height: 100%;
+  background-image: url("/images/background/Elegant_Background-11.jpg");
 }
 #content {
   overflow:auto;
@@ -186,19 +190,17 @@ border-radius:5px;
 html, body {
   height: 100%;
 }
-
 .footer{
   position: relative;
-  height:80px;
   width: 100%;
   color: #fff;
   background-color:#34495e;
   margin-top: -80px; 
+  height:80px;
+  clear:both;
   padding-top:10px;
   text-align: center;
-  clear:both;
 } 
-
 #article{
   margin: 0 auto;
   font-size: 6px;
