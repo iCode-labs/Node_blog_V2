@@ -7,6 +7,7 @@ module.exports = function(config, render, parse) {
 		moment = require('moment'),
 		ObjectId = mongoose.ObjectId;
 	var showMsg = require(config.mainpath + '/common/showMsg.js');
+	var tagmap = require(config.mainpath + '/common/tagmap.js');
 
 	var longth = function(epoch) {
 		var diff = Date.now() - parseInt(epoch, 10);
@@ -48,6 +49,7 @@ module.exports = function(config, render, parse) {
 		getnews: function * (next) {
 			var blogs = yield Blog.getLatestPosts();
 			var bloglist = new Array();
+			var tagsmap = new tagmap();
 			blogs.forEach(function(item) {
 				var blog = {
 					blogId: item._id,
@@ -58,13 +60,24 @@ module.exports = function(config, render, parse) {
 					browse_times: item.browse_times,
 					comment_times: item.comment_times
 				};
+				if (!underscore.isNull(item.blog_tags)) {
+					for (var i = 0; i < item.blog_tags.length; i++) {
+						if (!tagsmap.containsKey(item.blog_tags[i])) {
+							tagsmap.put(item.blog_tags[i], 1);
+						} else {
+							tagsmap.addValue(item.blog_tags[i]);
+						}
+					}
+				}
 				bloglist.push(blog);
 			});
+			var taglist = tagsmap.keyValues();
 			this.body = yield render('index', {
 				config: config.template,
 				title: '最新文章',
 				pageData: this.session,
-				articles: bloglist
+				articles: bloglist,
+				tags: taglist
 			});
 		},
 		getblog: function * (next) {

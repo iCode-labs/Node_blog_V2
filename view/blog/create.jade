@@ -7,6 +7,9 @@ block content
 				input(id='blog_edit_title' type='text' placeholder='标题')
 				textarea(class='blog_editor')
 	include ../common/footer
+	link(rel='stylesheet',href='/css/editor.css')
+	script(src='/javascripts/user/editor.js')
+	script(src='/javascripts/user/marked.js')
 	script.
 		var editor=new Editor();
 		editor.render();

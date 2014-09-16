@@ -181,12 +181,14 @@ a{
 }
 #content {
   overflow:auto;
-  padding-top: 55px;
-  padding-bottom:82px;
+  padding-top: 68px;
+  padding-bottom:95px;
   min-width: 400px;
   width: 970px;
+  min-height: 600px;
   margin: 0px auto 0px auto;
 }
+
 html, body {
   height: 100%;
 }
@@ -229,6 +231,29 @@ html, body {
   background-color: #FFF;
   margin-top: 1px;
   border-radius: 2px;
+  margin-bottom: 20px;
+  background-color: #34495e;
+  min-height: 40px;
+}
+.panel_title{
+  height: 40px;
+  line-height: 40px;
+  margin: 0px auto 0px auto;
+}
+.panel_title > span{
+  margin-left: 50px;
+  font-size: 14px;
+  color: #fff;
+}
+.panel_content{
+  background-color: #fff;
+  padding: 20px;
+}
+.blog_archive{
+  padding-left: 50px;
+}
+.blog_archive>a{
+  font-size: 14px;
 }
 .blog_comment{
 }

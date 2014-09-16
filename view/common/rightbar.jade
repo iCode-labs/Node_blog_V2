@@ -1,0 +1,28 @@
+div(class='panel')
+	div(class='panel_title') 
+		span 标签云
+	div(class='panel_content')
+		div(id='whatever')
+		for item in tags
+			a(href='/' rel='#{item.value}') #{item.text}
+div(class='panel')
+	div(class='panel_title') 
+		span 档案馆
+	div(class='panel_content')
+		div(class='blog_archive')
+			a(href='/') 2014年9月
+div(class='panel')
+	div(class='panel_title') 
+		span 友情链接
+	div(class='panel_content')
+		div
+			span 请联系我Weixin:yishushuyitian
+script.
+	$.fn.tagcloud.defaults = {
+	  size: {start: 10, end: 24, unit: 'pt'},
+	  color: {start: '#555', end: '#f52'}
+	};
+
+	$(function () {
+	  $('#whatever a').tagcloud();
+	});
