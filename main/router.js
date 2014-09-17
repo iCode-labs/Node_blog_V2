@@ -22,6 +22,12 @@ module.exports = function(config) {
 		blog = require(config.controller + '/blog.js')(config, render, parse);
 	//初始化数据库
 	require('./common/dataseed.js')(config);
+	//初始化middleware
+	app.use(function * (next) {
+		var init = require(config.mainpath + './common/init.js')(config);
+		this.session.tags = yield init.inittags();
+		yield next;
+	});
 	//配置路由监听
 	router.redirect('/home', '/newblogs');
 	router.redirect('/', '/newblogs');
@@ -34,7 +40,9 @@ module.exports = function(config) {
 	router.get('/newblogs', blog.getnews);
 	router.get('/blog/:id', blog.getblog);
 	router.get('/category/:category', blog.getblogbycategory);
+	router.get('/tag/:tag', blog.getblogbytag);
 	app.use(router.middleware());
+
 	app.use(common.notFound);
 	return app;
 }

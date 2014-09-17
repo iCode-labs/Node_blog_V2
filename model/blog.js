@@ -68,5 +68,13 @@ module.exports = function(config) {
 			.sort('field -date_created')
 			.exec();
 	};
+	BlogSchema.statics.getBlogsByTag = function(tag) {
+		return this
+			.find({
+				"blog_tags": tag
+			})
+			.sort('field -date_created')
+			.exec();
+	};
 	mongoose.model('Blog', BlogSchema);
 }

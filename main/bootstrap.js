@@ -13,7 +13,8 @@ module.exports = function(root, mainpath) {
 		mount = require('koa-mount'),
 		userconfig = require(root + '/config')(root),
 		configRouter = require('./router.js')(userconfig),
-		mime = require('./common/mimemap.js').types;
+		mime = require('./common/mimemap.js').types,
+		inittags = require('./common/init.js')(root, userconfig).inittags;
 	//设置静态文件路径
 	app.use(staticCache(path.join(root, 'public'), {
 		maxAge: 365 * 24 * 60 * 60

@@ -231,7 +231,7 @@ html, body {
   background-color: #FFF;
   margin-top: 1px;
   border-radius: 2px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   background-color: #34495e;
   min-height: 40px;
 }
@@ -248,6 +248,7 @@ html, body {
 .panel_content{
   background-color: #fff;
   padding: 20px;
+  border-radius: 2px;
 }
 .blog_archive{
   padding-left: 50px;
@@ -264,4 +265,11 @@ html, body {
   text-align: left;
   padding-top: 5px;
   height: 20px;
+}
+#tags{
+  margin: auto;
+}
+#tag{
+  display: inline-block;
+  margin-right: 2px;
 }

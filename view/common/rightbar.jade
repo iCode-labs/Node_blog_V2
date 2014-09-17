@@ -2,9 +2,9 @@ div(class='panel')
 	div(class='panel_title') 
 		span 标签云
 	div(class='panel_content')
-		div(id='whatever')
-		for item in tags
-			a(href='/' rel='#{item.value}') #{item.text}
+		div(id='tags')
+			for item in tags
+				a(href='/tag/#{item.text}' id='tag' rel='#{item.value}') #{item.text}
 div(class='panel')
 	div(class='panel_title') 
 		span 档案馆
@@ -16,13 +16,13 @@ div(class='panel')
 		span 友情链接
 	div(class='panel_content')
 		div
-			span 请联系我Weixin:yishushuyitian
+			span 请联系我weixin:yishushuyitian
 script.
 	$.fn.tagcloud.defaults = {
-	  size: {start: 10, end: 24, unit: 'pt'},
-	  color: {start: '#555', end: '#f52'}
+	  size: {start: 8, end: 24, unit: 'pt'},
+	  color: {start: '#009900', end: '#000033'}
 	};
 
 	$(function () {
-	  $('#whatever a').tagcloud();
+	  $('#tags a').tagcloud();
 	});
