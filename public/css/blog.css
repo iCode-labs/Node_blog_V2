@@ -75,19 +75,19 @@ body
 
 #blog_author{
   float: left;
-  padding: 15px;
+  padding: 10px;
 }
 
 #blog_commit{
   float: left;
-  padding: 15px;
-  margin-left: 10%;
+  padding: 10px;
+  margin-left: 5%;
 }
 
 #blog_date{
   float: left;
-  padding: 15px;
-  margin-left: 10%;
+  padding: 10px;
+  margin-left: 5%;
 }
 .btm_pagbar{
   clear: both;
@@ -251,7 +251,6 @@ html, body {
   border-radius: 2px;
 }
 .blog_archive{
-  padding-left: 50px;
 }
 .blog_archive>a{
   font-size: 14px;
@@ -273,3 +272,4 @@ html, body {
   display: inline-block;
   margin-right: 2px;
 }
+

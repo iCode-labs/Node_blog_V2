@@ -17,6 +17,9 @@ module.exports = function(root) {
 				text: 'Node.js',
 				href: '/category/nodejs'
 			}, {
+				text: 'Python',
+				href: '/category/python'
+			}, {
 				text: '游戏',
 				href: '/category/game'
 			}, {
@@ -32,6 +35,9 @@ module.exports = function(root) {
 			}, {
 				text: '游戏',
 				href: '/category/game'
+			}, {
+				text: 'Python',
+				href: '/category/python'
 			}]
 		}
 	}

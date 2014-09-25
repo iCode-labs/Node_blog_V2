@@ -7,7 +7,7 @@ div(class='panel')
 				a(href='/tag/#{item.text}' id='tag' rel='#{item.value}') #{item.text}
 div(class='panel')
 	div(class='panel_title') 
-		span 档案馆
+		span 归档
 	div(class='panel_content')
 		div(class='blog_archive')
 			a(href='/') 2014年9月
@@ -16,7 +16,8 @@ div(class='panel')
 		span 友情链接
 	div(class='panel_content')
 		div
-			span 请联系我weixin:yishushuyitian
+			span 联系方式:
+				a gao_chenfei@163.com
 script.
 	$.fn.tagcloud.defaults = {
 	  size: {start: 8, end: 24, unit: 'pt'},
