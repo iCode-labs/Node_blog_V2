@@ -1,22 +1,21 @@
 extends ./common/layout
 block content
-	div(id='bodycontainer')
-		div(id='content')
-			div(id='leftbar')
-			div(id='rightbar')
-				include common/rightbar
-			div(id='main')
-				if(articles)
-					for item in articles
-						div(class='blog_row')
-							div(class='blog_top')
-								span(class='blog_title')
-									a(href='/blog/#{item.blogId}') #{item.blog_title}
-							div(class='blog_btm')
-								ul
-									a(id='blog_author' class='fui-user')  #{item.author_name}
-									a(id='blog_commit' class='fui-eye')  浏览 #{item.browse_times}
-									a(id='blog_commit' class='fui-chat')  评论 #{comment_times}
-									a(id='blog_date' class='fui-time')  #{item.blog_longth}
+	div(id='home-widgets' class='clearfix')
+		div(id='rightbar')
+			include common/rightbar
+		div(id='main' class='featured-posts shadow')
+			if(articles)
+				for item in articles
+					div(class='post type-post status-publish')
+						h3 
+							a(href='/blog/#{item.blogId}') #{item.blog_title}
+						p(class='post-meta')
+							a(id='blog_author' class='fui-user')  #{item.author_name}
+							a(id='blog_commit' class='fui-eye')  浏览 #{item.browse_times}
+							a(id='blog_commit' class='fui-chat')  评论 #{comment_times}
+							a(id='blog_date' class='fui-time')  #{item.blog_longth}
+						p Some info about the article 
+							a(href='/blog/#{item.blogId}') Readmore
+							
 	include common/footer
 	

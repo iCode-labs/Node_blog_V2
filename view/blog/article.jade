@@ -1,19 +1,23 @@
 extends ../common/layout
 block content
-	div(id='bodycontainer')
-		div(id='content')
-			div(id='leftbar')
-			div(id='rightbar')
-			div(id='main')
-				div(id='article')
-					div(class='blog_top')
-						span(class='blog_title')
-							a #{blog.blog_title}
-					div(class='blog_btm')
-						ul
-							a(id='blog_author' class='fui-user')  #{blog.author_name}
-							a(id='blog_commit' class='fui-eye')   浏览 #{blog.blog_browse}
-							a(id='blog_commit' class='fui-chat')  评论 #{blog.comment_times}
-							a(id='blog_date' class='fui-time')  #{blog.blog_longth}
-					div(class='blog_content') !{blog.blog_content}
+	div(id='home-widgets' class='clearfix')
+		div(id='rightbar')
+		div(id='main')
+			div(id='article' class='post type-post status-publish format-standard hentry')
+				h1 #{blog.blog_title}
+				p(class='post-meta')
+					a(id='blog_author' class='fui-user')  #{blog.author_name}/
+					a(id='blog_commit' class='fui-eye')   浏览 #{blog.blog_browse}
+					a(id='blog_commit' class='fui-chat')  评论 #{blog.comment_times}
+					a(id='blog_date' class='fui-time')  #{blog.blog_longth}
+				p !{blog.blog_content}
+				section(class='article-comments')
+					div(id='disqus_thread')
+	script.
+		var disqus_shortname = #{config.disqus_shortname};
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
 	include ../common/footer

@@ -6,6 +6,7 @@ module.exports = function(root) {
 		controller: root + '/controller/',
 		mainpath: root + '/main/',
 		secret: '1234!@#$',
+		disqus_shortname: 'gaochenfei',
 		port: 8080,
 		template: {
 			webtitle: 'rain\'blog',

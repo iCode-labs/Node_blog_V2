@@ -33,7 +33,6 @@ module.exports = function(config, render, parse) {
 				};
 				this.body = yield showMsg(params, this.session, config, render);
 			} else {
-				console.log(blogdata);
 				var blog = new Blog();
 				blog.blog_title = blogdata.blogtitle;
 				blog.blog_content = blogdata.blogcontent;

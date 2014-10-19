@@ -4,14 +4,15 @@ html
     title #{title}|#{config.webtitle}
     meta(content='text/html;charset=utf-8',http-equiv='Content-Type')
     meta(name="author",content="flex")
-    link(rel='stylesheet',href='/bootstrap/css/bootstrap.css')
-    link(rel='stylesheet',href='/css/flat-ui.css')
-    link(rel='stylesheet',href='/css/blog.css')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet',href='/stylesheets/app.css')
     link(rel='stylesheet',href='/css/ui-dialog.css')
     link(rel='icon',href='/images/favicon.ico',type='image/x-icon')
     script(src='/javascripts/jquery-1.10.2.min.js')
     script(src='/javascripts/user/artDialog.min.js')
     script(src='/javascripts/user/tagcloud.js')
-  body
-    include topbar
-    block content
+    script(src='/bower_components/modernizr/modernizr.js')
+  body(class='home page page-id-1116 page-template page-template-page-home-php gecko white')
+    div(id="wrap" class="clearfix")
+        include topbar
+        block content

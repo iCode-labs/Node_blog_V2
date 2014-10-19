@@ -1,19 +1,16 @@
-div(class='panel')
-	div(class='panel_title') 
-		span 标签云
+div(class='widget shadow')
+	h4(class='widget-title') 标签云
 	div(class='panel_content')
 		div(id='tags')
 			for item in tags
 				a(href='/tag/#{item.text}' id='tag' rel='#{item.value}') #{item.text}
-div(class='panel')
-	div(class='panel_title') 
-		span 归档
+div(class='widget shadow')
+	h4(class='widget-title') 归档
 	div(class='panel_content')
 		div(class='blog_archive')
 			a(href='/') 2014年9月
-div(class='panel')
-	div(class='panel_title') 
-		span 友情链接
+div(class='widget shadow')
+	h4(class='widget-title') 友情链接
 	div(class='panel_content')
 		div
 			span 联系方式:
