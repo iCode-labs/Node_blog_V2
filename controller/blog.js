@@ -92,8 +92,8 @@ module.exports = function(config, render, parse) {
 					config: config.template,
 					title: resblog.blog_title,
 					blog: resblog,
-					pageData: this.session，
-					config: config
+					pageData: this.session,
+					disqus: config.disqus_shortname
 				});
 			}
 		},
