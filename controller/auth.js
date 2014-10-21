@@ -1,12 +1,12 @@
 module.exports = function(config, render, parse) {
 	var mongoose = require('mongoose'),
 		User = mongoose.model('User'),
-		underscore = require('underscore');
+		_ = require('underscore');
 	var showMsg = require(config.mainpath + '/common/showMsg.js');
 
 	return {
 		login: function * (next) {
-			if (!underscore.isUndefined(this.session.user)) {
+			if (!_.isUndefined(this.session.user)) {
 				this.redirect('/newblogs');
 			} else {
 				this.session.url = '/login';
@@ -32,7 +32,7 @@ module.exports = function(config, render, parse) {
 			var user = yield User.findOne({
 				'user_email': account
 			}).exec();
-			if (!underscore.isNull(user)) {
+			if (!_.isNull(user)) {
 				if (password == user.password) {
 					this.session.is_login = true;
 					this.session.user = user;

@@ -2,12 +2,10 @@ module.exports = function(config, render, parse) {
 	var mongoose = require('mongoose'),
 		Blog = mongoose.model('Blog'),
 		base64 = require(config.mainpath + 'common/base64.js'),
-		underscore = require('underscore'),
+		_ = require('underscore'),
 		marked = require('marked'),
-		moment = require('moment'),
-		ObjectId = mongoose.ObjectId;
+		moment = require('moment');
 	var showMsg = require(config.mainpath + '/common/showMsg.js');
-	var tagsmap = require(config.mainpath + '/common/tagmap.js');
 
 	var longth = function(epoch) {
 		var diff = Date.now() - parseInt(epoch, 10);
@@ -24,7 +22,7 @@ module.exports = function(config, render, parse) {
 		},
 		oncreate: function * (next) {
 			var blogdata = yield parse(this);
-			if (underscore.isNull(this.session.user)) {
+			if (_.isNull(this.session.user)) {
 				var params = {
 					title: '提示',
 					msg: '请先登录',
@@ -46,6 +44,22 @@ module.exports = function(config, render, parse) {
 				};
 			}
 		},
+		pushblog: function * (next) {
+			var blogdata = yield parse(this);
+			if (blogdata.token == config.pushtoken) {
+				var blog = new Blog();
+				blog.blog_title = blogdata.blog_title;
+				blog.blog_content = blogdata.blog_content;
+				blog.blog_snap = blogdata.blog_snap;
+				blog.author_name = blogdata.user_name;
+				blog.blog_category = blogdata.blog_category;
+				blog.blog_tags = blogdata.blog_tags;
+				blog.save();
+				this.body = {
+					isSuccess: true
+				};
+			}
+		},
 		getnews: function * (next) {
 			var blogs = yield Blog.getLatestPosts();
 			var bloglist = new Array();
@@ -54,12 +68,12 @@ module.exports = function(config, render, parse) {
 					blogId: item._id,
 					blog_title: item.blog_title,
 					blog_longth: longth(item.date_created.getTime()),
+					blog_snap: item.blog_snap,
 					author_name: item.author_name,
 					blog_tags: item.blog_tags,
 					browse_times: item.browse_times,
 					comment_times: item.comment_times
 				};
-
 				bloglist.push(blog);
 			});
 			this.body = yield render('index', {
@@ -87,7 +101,7 @@ module.exports = function(config, render, parse) {
 				blog_browse: blog.browse_times,
 				comment_times: blog.blog_comments.length
 			};
-			if (!underscore.isNull(blog)) {
+			if (!_.isNull(blog)) {
 				this.body = yield render("/blog/article", {
 					config: config.template,
 					title: resblog.blog_title,
@@ -105,6 +119,7 @@ module.exports = function(config, render, parse) {
 					blogId: item._id,
 					blog_title: item.blog_title,
 					blog_longth: longth(item.date_created.getTime()),
+					blog_snap: item.blog_snap,
 					author_name: item.author_name,
 					blog_tags: item.blog_tags,
 					browse_times: item.browse_times,
@@ -128,6 +143,7 @@ module.exports = function(config, render, parse) {
 					blogId: item._id,
 					blog_title: item.blog_title,
 					blog_longth: longth(item.date_created.getTime()),
+					blog_snap: item.blog_snap,
 					author_name: item.author_name,
 					blog_tags: item.blog_tags,
 					browse_times: item.browse_times,

@@ -11,13 +11,15 @@ module.exports = function(config) {
 			type: String,
 			required: true
 		},
+		blog_snap: {
+			type: String
+		},
 		is_active: {
 			type: Boolean,
 			default: true
 		},
 		author_id: {
 			type: String,
-			required: true
 		},
 		author_name: {
 			type: String,

@@ -37,6 +37,7 @@ module.exports = function(config) {
 	router.get('/logout', auth.logout);
 	router.get('/create', blog.create);
 	router.post('/create', blog.oncreate);
+	router.post('/pushblog', blog.pushblog);
 	router.get('/newblogs', blog.getnews);
 	router.get('/blog/:id', blog.getblog);
 	router.get('/category/:category', blog.getblogbycategory);

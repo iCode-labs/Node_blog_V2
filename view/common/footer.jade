@@ -1,5 +1,15 @@
 div(id='footer' class='clearfix')
 	div(id='footer-left')
-		p @blog 基于Node.js+mongodb.All rights reserved.
+		p 基于Node.js+mongodb.All rights reserved.
 	div(id='footer-right')
-		p 
+		div(class='menu-lower-container')
+			ul(id='menu-lower' class='menu')
+				if(pageData.is_login)
+					for item in config.usernavs
+						li(class="menu-item")
+							a(href='#{item.href}') #{item.text}
+				else
+					for item in config.guestnavs
+						li(class="menu-item")
+							a(href='#{item.href}') #{item.text}
+					
