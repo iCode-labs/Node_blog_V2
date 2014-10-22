@@ -112,7 +112,6 @@ h4,
 h5,
 h6 {
 	margin: 0 0 10px;
-	font-weight: bold;
 	line-height: 20px;
 	text-rendering: optimizelegibility;
 	color: #111;
@@ -1215,6 +1214,9 @@ p.slide-caption a:visited {
 p.post-meta {
 	font-size: 11px;
 	margin-bottom: 8px;
+}
+.post-meta a{
+	margin-right:15px;
 }
 
 /* Sidebar Widgets
