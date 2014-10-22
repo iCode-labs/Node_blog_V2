@@ -9,5 +9,7 @@ install
     npm install
     node --harmony app.js
 
-/login 登录界面
+ScreenShot
+-----
+![img](./public/image/screenshot.png)
 
