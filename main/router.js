@@ -43,7 +43,6 @@ module.exports = function(config) {
 	router.get('/category/:category', blog.getblogbycategory);
 	router.get('/tag/:tag', blog.getblogbytag);
 	app.use(router.middleware());
-
 	app.use(common.notFound);
 	return app;
 }

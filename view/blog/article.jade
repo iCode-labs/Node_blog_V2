@@ -6,10 +6,9 @@ block content
 			div(id='article' class='post type-post status-publish format-standard hentry')
 				h1 #{blog.blog_title}
 				p(class='post-meta')
-					a(id='blog_author' class='fui-user')  #{blog.author_name}/
-					a(id='blog_commit' class='fui-eye')   浏览 #{blog.blog_browse}
-					a(id='blog_commit' class='fui-chat')  评论 #{blog.comment_times}
-					a(id='blog_date' class='fui-time')  #{blog.blog_longth}
+					a(id='blog_author')  by #{blog.author_name},
+					a(id='blog_commit')   views #{blog.blog_browse},
+					a(id='blog_date')  last update #{blog.blog_longth}
 				p !{blog.blog_content}
 				section(class='article-comments')
 					div(id='disqus_thread')
