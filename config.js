@@ -6,8 +6,8 @@ module.exports = function(root) {
 		controller: root + '/controller/',
 		mainpath: root + '/main/',
 		secret: '1234!@#$',
-		disqus_shortname: 'gaochenfei',
-		pushtoken: 'what you should see',
+		disqus_shortname: 'disqus_shortname',
+		pushtoken: 'script token',
 		port: 8080,
 		template: {
 			webtitle: 'rain\'blog',
