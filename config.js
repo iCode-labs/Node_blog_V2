@@ -7,7 +7,7 @@ module.exports = function(root) {
 		mainpath: root + '/main/',
 		secret: '1234!@#$',
 		disqus_shortname: 'disqus_shortname',
-		pushtoken: 'script token',
+		pushtoken: 'what you should see',
 		port: 8080,
 		template: {
 			webtitle: 'rain\'blog',

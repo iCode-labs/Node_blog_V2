@@ -45,6 +45,9 @@ module.exports = function(config) {
 			type: Number,
 			default: 0
 		},
+		post_date: {
+			type: String
+		},
 		date_created: {
 			type: Date,
 			default: Date.now

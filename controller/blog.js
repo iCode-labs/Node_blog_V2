@@ -1,7 +1,6 @@
 module.exports = function(config, render, parse) {
 	var mongoose = require('mongoose'),
 		Blog = mongoose.model('Blog'),
-		base64 = require(config.mainpath + 'common/base64.js'),
 		_ = require('underscore'),
 		marked = require('marked'),
 		moment = require('moment');
@@ -54,6 +53,7 @@ module.exports = function(config, render, parse) {
 				blog.author_name = blogdata.user_name;
 				blog.blog_category = blogdata.blog_category;
 				blog.blog_tags = blogdata.blog_tags;
+				blog.post_date = moment().format('MMMM Do YYYY, h:mm:ss a');
 				blog.save();
 				this.body = {
 					isSuccess: true
