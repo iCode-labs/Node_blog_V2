@@ -10,8 +10,11 @@ feature&require
 * MVC代码风格
 * 多用户支持
 * jade模板引擎
+* disqus评论
+* markdown editor
 * Node 0.11.x 
 * mongoose mongodb ORM module
+
 install
 -----
     git clone https://github.com/flex1988/Node_blog_V2.git
