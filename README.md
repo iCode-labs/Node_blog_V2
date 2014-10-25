@@ -2,7 +2,7 @@ nodejs koa MVC blog
 -----
 一个基于Nodejs koa的博客网站，使用MVC风格的代码架构。
 
-demo：http://114.215.152.65/
+demo：www.mirana.me
 feature&require
 -----
 * foundation5 theme 扁平化响应式的前端CSS框架
