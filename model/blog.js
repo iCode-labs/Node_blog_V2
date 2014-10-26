@@ -9,7 +9,6 @@ module.exports = function(config) {
 		},
 		blog_content: {
 			type: String,
-			required: true
 		},
 		blog_snap: {
 			type: String

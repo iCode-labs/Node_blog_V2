@@ -60,6 +60,22 @@ module.exports = function(config, render, parse) {
 				};
 			}
 		},
+		updateblog: function * (next) {
+			var blogdata = yield parse(this);
+			if (blogdata.token == config.pushtoken) {
+				var blog = yield Blog.findOne({
+					"blog_title": blogdata.blog_title
+				}).exec();
+				if (!_.isNull(blog)) {
+					blog.blog_content = blogdata.blog_content || "";
+					blog.blog_snap = blogdata.blog_snap || "";
+					blog.save();
+					this.body = {
+						isSuccess: true
+					}
+				}
+			}
+		},
 		getnews: function * (next) {
 			var blogs = yield Blog.getLatestPosts();
 			var bloglist = new Array();
@@ -71,8 +87,7 @@ module.exports = function(config, render, parse) {
 					blog_snap: item.blog_snap,
 					author_name: item.author_name,
 					blog_tags: item.blog_tags,
-					browse_times: item.browse_times,
-					comment_times: item.comment_times
+					browse_times: item.browse_times
 				};
 				bloglist.push(blog);
 			});
@@ -98,8 +113,7 @@ module.exports = function(config, render, parse) {
 				author_name: blog.author_name,
 				blog_content: marked(blog.blog_content),
 				blog_tags: blog.blog_tags,
-				blog_browse: blog.browse_times,
-				comment_times: blog.blog_comments.length
+				blog_browse: blog.browse_times
 			};
 			if (!_.isNull(blog)) {
 				this.body = yield render("/blog/article", {

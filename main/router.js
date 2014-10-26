@@ -15,20 +15,18 @@ module.exports = function(config) {
 		if (~file.indexOf('.js'))
 			require(config.model + '/' + file)(config);
 	});
-	//加载controller
+	//load controller
 	var index = require(config.controller + '/index.js')(config, render, parse),
 		auth = require(config.controller + '/auth.js')(config, render, parse),
 		common = require(config.controller + '/common.js')(config, render, parse),
 		blog = require(config.controller + '/blog.js')(config, render, parse);
-	//初始化数据库
-	require('./common/dataseed.js')(config);
 	//初始化middleware
 	app.use(function * (next) {
 		var init = require(config.mainpath + './common/init.js')(config);
 		this.session.tags = yield init.inittags();
 		yield next;
 	});
-	//配置路由监听
+	//配置监听函数
 	router.redirect('/home', '/newblogs');
 	router.redirect('/', '/newblogs');
 	router.get('/login', auth.login);
@@ -37,11 +35,14 @@ module.exports = function(config) {
 	router.get('/logout', auth.logout);
 	router.get('/create', blog.create);
 	router.post('/create', blog.oncreate);
-	router.post('/pushblog', blog.pushblog);
 	router.get('/newblogs', blog.getnews);
 	router.get('/blog/:id', blog.getblog);
 	router.get('/category/:category', blog.getblogbycategory);
 	router.get('/tag/:tag', blog.getblogbytag);
+	//blog open API
+	router.post('/pushblog', blog.pushblog);
+	router.post('/updateblog', blog.updateblog);
+	//load router
 	app.use(router.middleware());
 	app.use(common.notFound);
 	return app;
