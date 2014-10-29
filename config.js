@@ -8,7 +8,7 @@ module.exports = function(root) {
 		secret: '1234!@#$',
 		disqus_shortname: 'disqus_shortname',
 		pushtoken: 'what you should see',
-		port: 8080,
+		port: 8000,
 		template: {
 			webtitle: 'rain\'blog',
 			articlesperpage: 5,
