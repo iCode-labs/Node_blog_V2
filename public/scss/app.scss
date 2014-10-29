@@ -30,7 +30,11 @@
 .archive_list{
 	 list-style: none;
 }				
-
+pre > code {
+	white-space: pre;
+    margin:-1em -1em -1em -1em;
+    display: block;
+}
 /* Reset
 ----------------------------------------------- */
 
