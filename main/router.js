@@ -39,6 +39,7 @@ module.exports = function(config) {
 	router.get('/blog/:id', blog.getblog);
 	router.get('/category/:category', blog.getblogbycategory);
 	router.get('/tag/:tag', blog.getblogbytag);
+	router.post('/uploadpic', blog.uploadpic);
 	//blog open API
 	router.post('/pushblog', blog.pushblog);
 	router.post('/updateblog', blog.updateblog);

@@ -4,7 +4,6 @@ module.exports = function(root, mainpath) {
 		app = koa(),
 		co = require('co'),
 		path = require('path'),
-		parse = require('co-body'),
 		mongoose = require('mongoose'),
 		underscore = require('underscore'),
 		logger = require('koa-logger'),

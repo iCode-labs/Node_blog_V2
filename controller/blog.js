@@ -3,6 +3,11 @@ module.exports = function(config, render, parse) {
 		Blog = mongoose.model('Blog'),
 		_ = require('underscore'),
 		marked = require('marked'),
+		mutiparse = require('co-busboy'),
+		parse = require('co-body'),
+		fs = require('fs'),
+		os = require('os'),
+		path = require('path'),
 		moment = require('moment');
 	var showMsg = require(config.mainpath + '/common/showMsg.js');
 
@@ -45,6 +50,7 @@ module.exports = function(config, render, parse) {
 		},
 		pushblog: function * (next) {
 			var blogdata = yield parse(this);
+			console.log(blogdata);
 			if (blogdata.token == config.pushtoken) {
 				var blog = new Blog();
 				blog.blog_title = blogdata.blog_title;
@@ -172,6 +178,31 @@ module.exports = function(config, render, parse) {
 				articles: bloglist,
 				tags: this.session.tags
 			});
+		},
+		uploadpic: function * (next) {
+
+			if ('POST' != this.method)
+				return yield next;
+
+			var parts = mutiparse(this);
+			var part;
+			while (part = yield parts) {
+
+				var paths = part.filename.split("-");
+				var imgdir = "./public/upload/images/" + paths[0];
+				if (fs.existsSync(imgdir)) {
+					console.log('img directory exist');
+				} else {
+					fs.mkdirSync(imgdir);
+					console.log('create img directory success');
+				}
+				var stream = fs.createWriteStream("./public/upload/images/" + paths[0] + "/" + paths[1]);
+				part.pipe(stream);
+				console.log('uploading %s -> %s', part.filename, stream.path);
+			}
+			this.body = {
+				isSuccess: true
+			};
 		}
 	}
 }
