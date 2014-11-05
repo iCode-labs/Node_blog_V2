@@ -19,7 +19,8 @@ module.exports = function(config) {
 	var index = require(config.controller + '/index.js')(config, render, parse),
 		auth = require(config.controller + '/auth.js')(config, render, parse),
 		common = require(config.controller + '/common.js')(config, render, parse),
-		blog = require(config.controller + '/blog.js')(config, render, parse);
+		blog = require(config.controller + '/blog.js')(config, render, parse),
+		file = require(config.controller + '/file.js')(config, render, parse);
 	//初始化middleware
 	app.use(function * (next) {
 		var init = require(config.mainpath + './common/init.js')(config);
@@ -39,7 +40,8 @@ module.exports = function(config) {
 	router.get('/blog/:id', blog.getblog);
 	router.get('/category/:category', blog.getblogbycategory);
 	router.get('/tag/:tag', blog.getblogbytag);
-	router.post('/uploadpic', blog.uploadpic);
+	router.post('/uploadpic', file.uploadpic);
+	router.get('/getimage/:hash/:name', file.getimage);
 	//blog open API
 	router.post('/pushblog', blog.pushblog);
 	router.post('/updateblog', blog.updateblog);
