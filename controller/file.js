@@ -1,5 +1,6 @@
 module.exports = function(config, render, parse) {
-	var fs = require('fs');
+	var fs = require('fs'),
+		mutiparse = require('co-busboy');
 	return {
 		getimage: function * (next) {
 			var path = "./public/upload/images/" + this.params.hash + "/" + this.params.name;

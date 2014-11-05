@@ -32,7 +32,8 @@
     "koa-session": "*",
     "koa-router": "~3.0.0",
     "marked": "*",
-    "moment": "2.8.2"
+    "moment": "2.8.2",
+    "co-busboy": "*"
   },
   "engines": {
     "node": "0.11.4",

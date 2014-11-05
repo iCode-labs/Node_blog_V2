@@ -3,7 +3,6 @@ module.exports = function(config, render, parse) {
 		Blog = mongoose.model('Blog'),
 		_ = require('underscore'),
 		marked = require('marked'),
-		mutiparse = require('co-busboy'),
 		parse = require('co-body'),
 		fs = require('fs'),
 		os = require('os'),
