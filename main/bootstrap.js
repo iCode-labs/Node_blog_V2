@@ -2,7 +2,6 @@ module.exports = function(root, mainpath) {
 	var koa = require('koa'),
 		staticCache = require('koa-static-cache'),
 		app = koa(),
-		co = require('co'),
 		path = require('path'),
 		mongoose = require('mongoose'),
 		underscore = require('underscore'),
@@ -25,9 +24,18 @@ module.exports = function(root, mainpath) {
 	//路由分发
 	app.use(mount(configRouter));
 	//监听端口
-	app.listen(userconfig.port);
-	console.log('server listening on port:' + userconfig.port);
+	app.use(function * (next) {
+		try {
+			yield next;
+		} catch (err) {
+			this.status = err.status || 500;
+			this.type = 'html';
+			this.body = '<p>发生了一些错误，请联系我。</p>';
+		}
+	});
 	app.on('error', function(err) {
 		console.log('server error', err);
 	});
+	app.listen(userconfig.port);
+	console.log('server listening on port:' + userconfig.port);
 }

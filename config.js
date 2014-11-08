@@ -6,6 +6,7 @@ module.exports = function(root) {
 		controller: root + '/controller/',
 		mainpath: root + '/main/',
 		secret: '1234!@#$',
+		root: root,
 		disqus_shortname: 'disqus_shortname',
 		pushtoken: 'what you should see',
 		port: 8000,

@@ -1,1 +1,2 @@
-require(__dirname + '/main/bootstrap.js')(__dirname, __dirname + '/main/');
+var starter = require(__dirname + '/main/bootstrap.js');
+starter(__dirname, __dirname + '/main/');
