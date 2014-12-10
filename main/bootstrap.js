@@ -12,19 +12,15 @@ module.exports = function(root, mainpath) {
 		userconfig = require(root + '/config')(root),
 		configRouter = require('./router.js')(userconfig),
 		inittags = require('./common/init.js')(root, userconfig).inittags;
-	//设置静态文件路径
 	app.use(staticCache(path.join(root, 'public'), {
 		maxAge: 365 * 24 * 60 * 60
 	}));
-	//连接mongodb
 	mongoose.connect(userconfig.mongodb);
 	app.use(session());
 	app.use(logger());
 	app.keys = [userconfig.secret];
-	//路由分发
 	app.use(mount(configRouter));
-	//监听端口
-	app.use(function * (next) {
+	app.use(function*(next) {
 		try {
 			yield next;
 		} catch (err) {
