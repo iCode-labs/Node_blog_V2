@@ -22362,7 +22362,8 @@ th.hide-for-touch {
 #main {
   margin-right: 300px;
 }
-
+#article_main{
+}
 /* line 26, ../scss/app.scss */
 #tag {
   display: inline-block;

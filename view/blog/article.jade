@@ -1,9 +1,8 @@
 extends ../common/layout
 block content
 	div(id='home-widgets' class='clearfix')
-		div(id='rightbar')
-		div(id='main')
-			div(id='article' class='post type-post status-publish format-standard hentry')
+		div
+			div(id='article')
 				h1 #{blog.blog_title}
 				p(class='post-meta')
 					a(id='blog_author')  by #{blog.author_name},
