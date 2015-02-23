@@ -1,15 +1,17 @@
+var path = require('path');
+
 module.exports = function(root) {
 	return {
-		mongodb: 'mongodb://Air.local:27017/blogdatabase',
-		model: root + '/model/',
-		view: root + '/view/',
-		controller: root + '/controller/',
-		mainpath: root + '/main/',
+		mongodb: 'mongodb://localhost:27017/blogdatabase',
+		model: path.join(root, 'model'),
+		view: path.join(root, 'view'),
+		controller: path.join(root, 'controller'),
+		mainpath: path.join(root, 'server'),
 		secret: '1234!@#$',
 		root: root,
 		disqus_shortname: 'disqus_shortname',
 		pushtoken: 'what you should see',
-		port: 8000,
+		port: 8002,
 		template: {
 			webtitle: 'rain\'blog',
 			articlesperpage: 5,

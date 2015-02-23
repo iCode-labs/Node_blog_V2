@@ -22892,7 +22892,7 @@ textarea:focus {
   float: left;
   display: inline;
   margin-top: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 2px;
 }
 
 /* line 447, ../scss/app.scss */

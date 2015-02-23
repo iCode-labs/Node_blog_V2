@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function(conf) {
 	var koa = require('koa'),
 		app = koa(),
 		router = require('koa-router'),
@@ -7,28 +7,28 @@ module.exports = function(config) {
 		parse = require('co-body'),
 		router = new router();
 	//渲染模板函数
-	var render = views(config.view, {
+	var render = views(conf.view, {
 		default: 'jade'
 	});
 	//加载model
-	fs.readdirSync(config.model).forEach(function(file) {
+	fs.readdirSync(conf.model).forEach(function(file) {
 		if (~file.indexOf('.js'))
-			require(config.model + '/' + file)(config);
+			require(conf.model + '/' + file)(conf);
 	});
 	//load controller
-	var index = require(config.controller + '/index.js')(config, render, parse),
-		auth = require(config.controller + '/auth.js')(config, render, parse),
-		common = require(config.controller + '/common.js')(config, render, parse),
-		blog = require(config.controller + '/blog.js')(config, render, parse),
-		file = require(config.controller + '/file.js')(config, render, parse);
+	var index = require(conf.controller + '/index.js')(conf, render, parse),
+		auth = require(conf.controller + '/auth.js')(conf, render, parse),
+		common = require(conf.controller + '/common.js')(conf, render, parse),
+		blog = require(conf.controller + '/blog.js')(conf, render, parse),
+		file = require(conf.controller + '/file.js')(conf, render, parse);
 	//初始化middleware
-	app.use(function * (next) {
-		var init = require(config.mainpath + './common/init.js')(config);
-		this.session.tags = yield init.inittags();
+	app.use(function*(next) {
+		var init = require(conf.mainpath + '/common/init.js')(conf);
+		this.session.tags =
+			yield init.inittags();
 		yield next;
 	});
 	//配置监听函数
-	router.redirect('/home', '/newblogs');
 	router.redirect('/', '/newblogs');
 	router.get('/login', auth.login);
 	router.get('/register', auth.register);

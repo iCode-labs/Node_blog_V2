@@ -16,15 +16,17 @@ module.exports = function(config, render, parse) {
 	};
 
 	return {
-		create: function * (next) {
-			this.body = yield render('blog/create', {
-				config: config.template,
-				title: '发表博客',
-				pageData: this.session
-			});
+		create: function*(next) {
+			this.body =
+				yield render('blog/create', {
+					config: config.template,
+					title: '发表博客',
+					pageData: this.session
+				});
 		},
-		oncreate: function * (next) {
-			var blogdata = yield parse(this);
+		oncreate: function*(next) {
+			var blogdata =
+				yield parse(this);
 			if (_.isNull(this.session.user)) {
 				var params = {
 					title: '提示',
@@ -32,7 +34,8 @@ module.exports = function(config, render, parse) {
 					url: '/login',
 					second: 2
 				};
-				this.body = yield showMsg(params, this.session, config, render);
+				this.body =
+					yield showMsg(params, this.session, config, render);
 			} else {
 				var blog = new Blog();
 				blog.blog_title = blogdata.blogtitle;
@@ -47,8 +50,9 @@ module.exports = function(config, render, parse) {
 				};
 			}
 		},
-		pushblog: function * (next) {
-			var blogdata = yield parse(this);
+		pushblog: function*(next) {
+			var blogdata =
+				yield parse(this);
 			console.log(blogdata);
 			if (blogdata.token == config.pushtoken) {
 				var blog = new Blog();
@@ -65,12 +69,14 @@ module.exports = function(config, render, parse) {
 				};
 			}
 		},
-		updateblog: function * (next) {
-			var blogdata = yield parse(this);
+		updateblog: function*(next) {
+			var blogdata =
+				yield parse(this);
 			if (blogdata.token == config.pushtoken) {
-				var blog = yield Blog.findOne({
-					"blog_title": blogdata.blog_title
-				}).exec();
+				var blog =
+					yield Blog.findOne({
+						"blog_title": blogdata.blog_title
+					}).exec();
 				if (!_.isNull(blog)) {
 					blog.blog_content = blogdata.blog_content || "";
 					blog.blog_snap = blogdata.blog_snap || "";
@@ -81,8 +87,9 @@ module.exports = function(config, render, parse) {
 				}
 			}
 		},
-		getnews: function * (next) {
-			var blogs = yield Blog.getLatestPosts();
+		getnews: function*(next) {
+			var blogs =
+				yield Blog.getLatestPosts();
 			var bloglist = new Array();
 			blogs.forEach(function(item) {
 				var blog = {
@@ -96,18 +103,20 @@ module.exports = function(config, render, parse) {
 				};
 				bloglist.push(blog);
 			});
-			this.body = yield render('index', {
-				config: config.template,
-				title: '最新文章',
-				pageData: this.session,
-				articles: bloglist,
-				tags: this.session.tags
-			});
+			this.body =
+				yield render('index', {
+					config: config.template,
+					title: '最新文章',
+					pageData: this.session,
+					articles: bloglist,
+					tags: this.session.tags || []
+				});
 		},
-		getblog: function * (next) {
-			var blog = yield Blog.findOne({
-				"_id": this.params.id
-			}).exec();
+		getblog: function*(next) {
+			var blog =
+				yield Blog.findOne({
+					"_id": this.params.id
+				}).exec();
 			blog.browse_times++;
 			blog.save();
 			console.log(blog);
@@ -121,17 +130,19 @@ module.exports = function(config, render, parse) {
 				blog_browse: blog.browse_times
 			};
 			if (!_.isNull(blog)) {
-				this.body = yield render("/blog/article", {
-					config: config.template,
-					title: resblog.blog_title,
-					blog: resblog,
-					pageData: this.session,
-					disqus: config.disqus_shortname
-				});
+				this.body =
+					yield render("/blog/article", {
+						config: config.template,
+						title: resblog.blog_title,
+						blog: resblog,
+						pageData: this.session,
+						disqus: config.disqus_shortname
+					});
 			}
 		},
-		getblogbycategory: function * (next) {
-			var blogs = yield Blog.getCategoryPosts(this.params.category);
+		getblogbycategory: function*(next) {
+			var blogs =
+				yield Blog.getCategoryPosts(this.params.category);
 			var bloglist = new Array();
 			blogs.forEach(function(item) {
 				var blog = {
@@ -146,16 +157,18 @@ module.exports = function(config, render, parse) {
 				};
 				bloglist.push(blog);
 			});
-			this.body = yield render('/index', {
-				config: config.template,
-				title: this.params.category,
-				pageData: this.session,
-				articles: bloglist,
-				tags: this.session.tags
-			});
+			this.body =
+				yield render('/index', {
+					config: config.template,
+					title: this.params.category,
+					pageData: this.session,
+					articles: bloglist,
+					tags: this.session.tags
+				});
 		},
-		getblogbytag: function * (next) {
-			var blogs = yield Blog.getBlogsByTag(this.params.tag);
+		getblogbytag: function*(next) {
+			var blogs =
+				yield Blog.getBlogsByTag(this.params.tag);
 			var bloglist = new Array();
 			blogs.forEach(function(item) {
 				var blog = {
@@ -170,13 +183,14 @@ module.exports = function(config, render, parse) {
 				};
 				bloglist.push(blog);
 			});
-			this.body = yield render('/index', {
-				config: config.template,
-				title: this.params.category,
-				pageData: this.session,
-				articles: bloglist,
-				tags: this.session.tags
-			});
+			this.body =
+				yield render('/index', {
+					config: config.template,
+					title: this.params.category,
+					pageData: this.session,
+					articles: bloglist,
+					tags: this.session.tags
+				});
 		}
 
 	}
