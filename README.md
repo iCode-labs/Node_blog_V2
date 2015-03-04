@@ -6,6 +6,7 @@ demo：http://www.mirana.me
 
 tree structure
 -----
+```
 ├── bin                 #启动脚本
 ├── controller          #业务逻辑中间件
 ├── model               #mongoose Schema
@@ -22,8 +23,9 @@ tree structure
     ├── auth
     ├── blog
     └── common
+```
     
-feature&require
+feature&&require
 -----
 * markdown格式支持
 * foundation5 theme 扁平化响应式的前端CSS框架
