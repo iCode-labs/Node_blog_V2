@@ -41,7 +41,7 @@ Features
 Blog Manager
 =====
 
-![Blog Manager](https://github.com/flex1988/blog_manager)
+[Blog Manager](https://github.com/flex1988/blog_manager)
 基于Flask+Angular，管理blog。
 
 Install
