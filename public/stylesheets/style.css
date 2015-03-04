@@ -38,7 +38,7 @@ aside {
     width: 300px;
 }
 article {
-    padding: 20px 0 0 60px;
+    padding: 20px 40px 0 40px;
 }
 span {
     color: #565C84;
@@ -89,7 +89,7 @@ nav > ul > li:hover > a {
 nav > ul > li:hover > a > .caret {
     border-top-color: rgb(255, 255, 255);
 }
-footer {} #content {
+#content {
     display: table;
     padding-bottom: 40px;
 }
