@@ -18,7 +18,7 @@
 	    var port = this.opts.port || 8000;
 	    var router = require('./router.js')(this.opts);
 
-	    this.use(session());
+	    this.use(session(null, this));
 	    this.use(favicon(path.join(__dirname, "public/image/favicon.ico")));
 	    this.keys = [this.opts.secret] || "secret key string";
 	    this.use(staticCache(path.join(this.opts.root, 'public'), {
