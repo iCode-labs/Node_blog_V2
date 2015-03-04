@@ -1,21 +1,22 @@
 extends ../common/layout
 block content
-	div(id='home-widgets' class='clearfix')
-		div
-			div(id='article')
-				h1 #{blog.blog_title}
-				p(class='post-meta')
-					a(id='blog_author')  by #{blog.author_name},
-					a(id='blog_commit')   views #{blog.blog_browse},
-					a(id='blog_date')  last update #{blog.blog_longth}
-				p !{blog.blog_content}
-				section(class='article-comments')
-					div(id='disqus_thread')
-	script.
-		var disqus_shortname = '#{disqus}';
-		(function() {
-			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			})();
-	include ../common/footer
+    article
+        header
+            h2 #{blog.blog_title}
+        p
+            a(id='blog_author')  by #{blog.author_name},
+            a(id='blog_commit')   views #{blog.blog_browse},
+            a(id='blog_date')  last update #{blog.blog_longth}
+        p !{blog.blog_content}
+    section
+        div(id='disqus_thread')
+    script.
+        var disqus_shortname='#{disqus}';
+        (function(){
+        var dsq=document.createElement('script');
+        dsq.type='text/javascript';
+        dsq.async=true;
+        dsq.src='//'+disqus_shortname+'.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    include ../common/footer

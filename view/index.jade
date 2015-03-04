@@ -1,17 +1,18 @@
 extends ./common/layout
 block content
-	div(id='home-widgets' class='clearfix')
-		div(id='rightbar')
-			include common/rightbar
-		div(id='main' class='featured-posts shadow')
-			if(articles)
-				for item in articles
-					div(class='post type-post status-publish')
-						h3 
-							a(href='/blog/#{item.blogId}') #{item.blog_title}
-						p(class='post-meta')
-							a(id='blog_author' class='fui-user')  by #{item.author_name},
-							a(id='blog_commit' class='fui-eye')  views #{item.browse_times},
-							a(id='blog_date' class='fui-time')  last update #{item.blog_longth}
-	include common/footer
-	
+    div(id="content")
+        div(id="mainContent")
+            section
+                ul
+                    if(articles)
+                        for item in articles
+                            li(class="blogPost")
+                                h3
+                                    a(href='/blog/#{item.blogId}') #{item.blog_title}
+                                p
+                                    span(id='blog_author' class='fui-user')  by #{item.author_name}
+                                    span(id='blog_commit' class='fui-eye')  views #{item.browse_times}
+                                    span(id='blog_date' class='fui-time')  last update #{item.blog_longth}
+        aside
+            include common/aside
+    include common/footer

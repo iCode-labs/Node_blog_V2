@@ -1,0 +1,120 @@
+body {
+    background-color: #EBE8E4;
+    color: #555;
+    font-family: "Rokkitt-Regular-webfont", "Microsoft YaHei", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.5;
+    position: relative;
+}
+html,
+body {
+    height: 100%;
+}
+header,
+footer,
+aside,
+nav,
+article {
+    display: block;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: 400;
+    line-height: 1.1;
+    color: #222;
+}
+a {
+    color: rgb(119, 86, 40);
+    text-decoration: none;
+}
+aside {
+    display: table-cell;
+    width: 300px;
+}
+article {
+    padding: 20px 0 0 60px;
+}
+span {
+    color: #565C84;
+}
+li {
+    list-style-type: none;
+}
+nav {
+    background-color: rgb(198, 190, 154);
+    border: 1px solid #dedede;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
+    color: #888;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    display: inline-block;
+    list-style-type: none;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+nav > ul > li > a {
+    color: #666;
+    display: block;
+    line-height: 56px;
+    padding: 0 24px;
+    text-decoration: none;
+}
+nav > ul > li:hover {
+    background-color: rgb(180, 180, 180);
+}
+nav > ul > li:hover > a {
+    color: rgb(255, 255, 255);
+}
+nav > ul > li:hover > a > .caret {
+    border-top-color: rgb(255, 255, 255);
+}
+footer {} #content {
+    display: table;
+    padding-bottom: 40px;
+}
+#mainContent {
+    display: table-cell;
+    width: 620px;
+    padding: 0 22px 0px 22px;
+}
+#logo {
+    margin: 0 0 -10px 0;
+}
+.page {
+    margin: 50px 200px 0 200px;
+}
+.blogPost {
+    column-count: 2;
+    column-gap: 22px;
+}
+.blogPost header {
+    column-span: all;
+}
+@font-face {
+    font-family: 'Rokkitt-Regular-webfont';
+    src: url('/fonts/Rokkitt-Regular-webfont.eot');
+    src: url('/fonts/Rokkitt-Regular-webfont.eot') format('embedded-opentype'), url('/fonts/Rokkitt-Regular-webfont.woff') format('woff'), url('/fonts/Rokkitt-Regular-webfont.ttf') format('truetype'), url('/fonts/Rokkitt-Regular-webfont.svg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

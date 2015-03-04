@@ -1,0 +1,8 @@
+header
+    div(id="logo")
+        img(src="/image/logo.png" width="100%")
+    nav(id="nav-menu")
+        ul
+            for item in config.guestnavs
+                li
+                    a(href='#{item.href}') #{item.text}
