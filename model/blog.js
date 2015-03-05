@@ -30,6 +30,10 @@ module.exports = function(config) {
             type: Number,
             default: 0
         },
+        create_time: {
+            type: Date,
+            required: true
+        },
         update_time: {
             type: Date,
             required: true
@@ -37,10 +41,13 @@ module.exports = function(config) {
     }, {
         collection: 'Blogs'
     });
+    BlogSchema.statics.getBlogs = function() {
+        return this.find().exec();
+    };
     BlogSchema.statics.getLatestPosts = function() {
         return this
             .find()
-            .sort('field -update_time')
+            .sort('field -create_time')
             .limit(15)
             .find()
             .exec();
@@ -50,7 +57,7 @@ module.exports = function(config) {
             .find({
                 "category": category
             })
-            .sort('field -update_time')
+            .sort('field -create_time')
             .exec();
     };
     BlogSchema.statics.getBlogsByTag = function(tag) {
@@ -58,7 +65,7 @@ module.exports = function(config) {
             .find({
                 "tags": tag
             })
-            .sort('field -update_time')
+            .sort('field -create_time')
             .exec();
     };
     mongoose.model('Blog', BlogSchema);

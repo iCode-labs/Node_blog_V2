@@ -3,6 +3,6 @@ header
         img(src="/image/logo.png" width="100%")
     nav(id="nav-menu")
         ul
-            for item in config.guestnavs
+            for item in config.navs
                 li
                     a(href='#{item.href}') #{item.text}

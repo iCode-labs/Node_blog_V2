@@ -4,8 +4,12 @@ section
         div(id='tags')
             for item in tags
                 a(href='/tag/#{item.text}' id='tag' rel='#{item.value}') #{item.text}
-section
-    h4 Archive
+section(id="archive")
+    h4 Archives
+    div
+        for archive in archives
+            li
+                a(href='/archive/#{archive}') #{archive}
 section
     h4 Links
     div

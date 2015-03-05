@@ -4,9 +4,9 @@ block content
         header
             h2 #{blog.blog_title}
         p
-            a(id='blog_author')  by #{blog.author_name},
-            a(id='blog_commit')   views #{blog.blog_browse},
-            a(id='blog_date')  last update #{blog.blog_longth}
+            span #{blog.author_name} 
+            span #{blog.browse_times} views 
+            span #{blog.update_time}
         p !{blog.blog_content}
     section
         div(id='disqus_thread')

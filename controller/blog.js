@@ -7,48 +7,9 @@ module.exports = function(config, render, parse) {
         fs = require('fs'),
         os = require('os'),
         path = require('path'),
-        moment = require('moment');
-
-    var longth = function(epoch) {
-        var diff = Date.now() - parseInt(epoch, 10);
-        return moment.duration(diff).humanize() + ' ago';
-    };
+        dateFormat = require('dateformat');
 
     return {
-        create: function*(next) {
-            this.body =
-                yield render('blog/create', {
-                    config: config.template,
-                    title: '发表博客',
-                    pageData: this.session
-                });
-        },
-        oncreate: function*(next) {
-            var blogdata =
-                yield parse(this);
-            if (_.isNull(this.session.user)) {
-                var params = {
-                    title: '提示',
-                    msg: '请先登录',
-                    url: '/login',
-                    second: 2
-                };
-                this.body =
-                    yield showMsg(params, this.session, config, render);
-            } else {
-                var blog = new Blog();
-                blog.blog_title = blogdata.blogtitle;
-                blog.blog_content = blogdata.blogcontent;
-                blog.is_active = true;
-                blog.author_id = this.session.user._id;
-                blog.author_name = this.session.user.user_name;
-                blog.blog_category = blogdata.blogcategory;
-                blog.save();
-                this.body = {
-                    isSuccess: true
-                };
-            }
-        },
         pushblog: function*(next) {
             var blogdata =
                 yield parse(this);
@@ -94,10 +55,10 @@ module.exports = function(config, render, parse) {
                 var blog = {
                     blogId: item._id,
                     blog_title: item.blog_title,
-                    blog_longth: longth(item.update_time.getTime()),
+                    update_time: dateFormat(item.update_time.getTime(), "yyyy-mm-dd hh:MM:ss"),
                     author_name: item.author,
                     blog_tags: item.tags,
-                    browse_times: item.visits
+                    browse_times: item.visits++
                 };
                 bloglist.push(blog);
             });
@@ -105,9 +66,9 @@ module.exports = function(config, render, parse) {
                 yield render('index', {
                     config: config.template,
                     title: '最新文章',
-                    pageData: this.session,
                     articles: bloglist,
-                    tags: this.session.tags || []
+                    tags: this.session.tags,
+                    archives: this.session.archives
                 });
         },
         getblog: function*(next) {
@@ -122,7 +83,7 @@ module.exports = function(config, render, parse) {
                 blogId: blog._id,
                 blog_title: blog.blog_title,
                 blog_content: marked(blog.blog_content),
-                blog_longth: longth(blog.update_time.getTime()),
+                update_time: dateFormat(blog.update_time.getTime(), "yyyy-mm-dd hh:MM:ss"),
                 author_name: blog.author,
                 blog_tags: blog.tags,
                 browse_times: blog.visits++
@@ -133,7 +94,6 @@ module.exports = function(config, render, parse) {
                         config: config.template,
                         title: resblog.blog_title,
                         blog: resblog,
-                        pageData: this.session,
                         disqus: config.disqus_shortname
                     });
             }
@@ -146,12 +106,10 @@ module.exports = function(config, render, parse) {
                 var blog = {
                     blogId: item._id,
                     blog_title: item.blog_title,
-                    blog_longth: longth(item.update_time.getTime()),
-                    blog_snap: item.blog_snap,
-                    author_name: item.author_name,
-                    blog_tags: item.blog_tags,
-                    browse_times: item.browse_times,
-                    comment_times: item.comment_times
+                    update_time: dateFormat(item.update_time.getTime(), "yyyy-mm-dd hh:MM:ss"),
+                    author: item.author,
+                    blog_tags: item.tags,
+                    browse_times: item.visits++
                 };
                 bloglist.push(blog);
             });
@@ -159,25 +117,23 @@ module.exports = function(config, render, parse) {
                 yield render('/index', {
                     config: config.template,
                     title: this.params.category,
-                    pageData: this.session,
                     articles: bloglist,
-                    tags: this.session.tags
+                    tags: this.session.tags,
+                    archives: this.session.archives
                 });
         },
         getblogbytag: function*(next) {
             var blogs =
                 yield Blog.getBlogsByTag(this.params.tag);
-            var bloglist = new Array();
+            var bloglist = [];
             blogs.forEach(function(item) {
                 var blog = {
                     blogId: item._id,
                     blog_title: item.blog_title,
-                    blog_longth: longth(item.update_time.getTime()),
-                    blog_snap: item.blog_snap,
-                    author_name: item.author_name,
-                    blog_tags: item.blog_tags,
-                    browse_times: item.browse_times,
-                    comment_times: item.comment_times
+                    update_time: dateFormat(item.update_time.getTime(), "yyyy-mm-dd hh:MM:ss"),
+                    author: item.author,
+                    tags: item.tags,
+                    browse_times: item.browse_times
                 };
                 bloglist.push(blog);
             });
@@ -185,11 +141,10 @@ module.exports = function(config, render, parse) {
                 yield render('/index', {
                     config: config.template,
                     title: this.params.category,
-                    pageData: this.session,
                     articles: bloglist,
-                    tags: this.session.tags
+                    tags: this.session.tags,
+                    archives: this.session.archives
                 });
         }
-
     }
 }

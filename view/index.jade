@@ -10,9 +10,9 @@ block content
                                 h3
                                     a(href='/blog/#{item.blogId}') #{item.blog_title}
                                 p
-                                    span(id='blog_author' class='fui-user')  by #{item.author_name}
-                                    span(id='blog_commit' class='fui-eye')  views #{item.browse_times}
-                                    span(id='blog_date' class='fui-time')  last update #{item.blog_longth}
+                                    span #{item.author_name} 
+                                    span #{item.browse_times} views 
+                                    span #{item.update_time}
         aside
             include common/aside
     include common/footer

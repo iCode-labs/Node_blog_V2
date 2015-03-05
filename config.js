@@ -15,28 +15,12 @@ module.exports = function(root) {
         template: {
             webtitle: 'rain\'blog',
             articlesperpage: 5,
-            usernavs: [{
+            navs: [{
                 text: '最新',
                 href: '/newblogs'
             }, {
-                text: 'Node.js',
-                href: '/category/nodejs'
-            }, {
-                text: 'Python',
-                href: '/category/python'
-            }, {
-                text: '游戏',
-                href: '/category/game'
-            }, {
-                text: '其他',
-                href: '/category/other'
-            }, {
-                text: '发表',
-                href: '/create'
-            }],
-            guestnavs: [{
-                text: '最新',
-                href: '/newblogs'
+                text: 'Javascript',
+                href: '/category/javascript'
             }, {
                 text: 'Node.js',
                 href: '/category/nodejs'

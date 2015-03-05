@@ -17,6 +17,7 @@ aside,
 nav,
 article {
     display: block;
+    font-size: 15px;
 }
 h1,
 h2,
@@ -36,9 +37,13 @@ a {
 aside {
     display: table-cell;
     width: 300px;
+    font-size: 16px;
 }
 article {
     padding: 20px 40px 0 40px;
+}
+article p span {
+    margin-right: 10px;
 }
 span {
     color: #565C84;
@@ -97,6 +102,10 @@ nav > ul > li:hover > a > .caret {
     display: table-cell;
     width: 620px;
     padding: 0 22px 0px 22px;
+}
+#mainContent span {
+    margin-right: 10px;
+    color: #868078;
 }
 #logo {
     margin: 0 0 -10px 0;
