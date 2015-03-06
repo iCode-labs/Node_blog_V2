@@ -58,7 +58,7 @@ module.exports = function(config, render, parse) {
                     update_time: dateFormat(item.update_time.getTime(), "yyyy-mm-dd hh:MM:ss"),
                     author_name: item.author,
                     blog_tags: item.tags,
-                    browse_times: item.visits++
+                    browse_times: item.visits
                 };
                 bloglist.push(blog);
             });
@@ -86,7 +86,7 @@ module.exports = function(config, render, parse) {
                 update_time: dateFormat(blog.update_time.getTime(), "yyyy-mm-dd hh:MM:ss"),
                 author_name: blog.author,
                 blog_tags: blog.tags,
-                browse_times: blog.visits++
+                browse_times: blog.visits
             };
             if (!_.isNull(blog)) {
                 this.body =
@@ -107,9 +107,9 @@ module.exports = function(config, render, parse) {
                     blogId: item._id,
                     blog_title: item.blog_title,
                     update_time: dateFormat(item.update_time.getTime(), "yyyy-mm-dd hh:MM:ss"),
-                    author: item.author,
+                    author_name: item.author,
                     blog_tags: item.tags,
-                    browse_times: item.visits++
+                    browse_times: item.visits
                 };
                 bloglist.push(blog);
             });

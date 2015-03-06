@@ -109,6 +109,7 @@ nav > ul > li:hover > a > .caret {
 }
 #logo {
     margin: 0 0 -10px 0;
+    text-align: center;
 }
 .page {
     margin: 50px 200px 0 200px;
