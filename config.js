@@ -9,12 +9,10 @@ module.exports = function(root) {
         mainpath: path.join(root, 'server'),
         secret: '1234!@#$',
         root: root,
-        disqus_shortname: 'gaochenfei',
-        pushtoken: 'what you should see',
+        disqus_shortname: 'disqus',
         port: 8002,
         template: {
-            webtitle: 'rain\'blog',
-            articlesperpage: 5,
+            webtitle: 'blog',
             navs: [{
                 text: '最新',
                 href: '/newblogs'
