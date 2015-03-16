@@ -128,3 +128,26 @@ nav > ul > li:hover > a > .caret {
     font-weight: normal;
     font-style: normal;
 }
+/*320px布局*/
+
+html {
+    font-size: 100px;
+}
+body {
+    font-size: 0.14rem
+    /*实际相当于14px*/
+}
+/* iphone 6 */
+
+@media (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    html {
+        font-size: 117.1875px;
+    }
+}
+/* iphone6 plus */
+
+@media (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+    html {
+        font-size: 129.375px;
+    }
+}
