@@ -55,7 +55,7 @@ module.exports = function(config, render, parse) {
                 var blog = {
                     blogId: item._id,
                     blog_title: item.blog_title,
-                    update_time: dateFormat(item.update_time.getTime(), "yyyy-mm-dd hh:MM:ss"),
+                    update_time: dateFormat(item.create_time.getTime(), "yyyy-mm-dd hh:MM:ss"),
                     author_name: item.author,
                     blog_tags: item.tags,
                     browse_times: item.visits

@@ -121,6 +121,16 @@ nav > ul > li:hover > a > .caret {
 .blogPost header {
     column-span: all;
 }
+.right-nav {
+    display: inline-block;
+    text-align: right;
+}
+.right-nav a {
+    text-align: center;
+}
+.right-nav img {
+    text-align: center;
+}
 @font-face {
     font-family: 'Rokkitt-Regular-webfont';
     src: url('/fonts/Rokkitt-Regular-webfont.eot');

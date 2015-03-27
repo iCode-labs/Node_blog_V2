@@ -1,8 +1,11 @@
 header
     div(id="logo")
         img(src="/image/logo.png")
-    nav(id="nav-menu")
+    nav(id="")
         ul
             for item in config.navs
                 li
                     a(href='#{item.href}') #{item.text}
+            li
+                a(href='/rss/')
+                    img(src="/image/rss-32.png")
