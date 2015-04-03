@@ -1,19 +1,18 @@
+'use strict';
 module.exports = function(config, render, parse) {
-    var mongoose = require('mongoose'),
-        Blog = mongoose.model('Blog'),
-        _ = require('underscore'),
-        marked = require('marked'),
-        parse = require('co-body'),
-        fs = require('fs'),
-        os = require('os'),
-        path = require('path'),
-        dateFormat = require('dateformat');
+    var mongoose = require('mongoose');
+    var Blog = mongoose.model('Blog');
+    var _ = require('underscore');
+    var marked = require('marked');
+    var fs = require('fs');
+    var os = require('os');
+    var path = require('path');
+    var dateFormat = require('dateformat');
 
     return {
         pushblog: function*(next) {
             var blogdata =
                 yield parse(this);
-            console.log(blogdata);
             if (blogdata.token == config.pushtoken) {
                 var blog = new Blog();
                 blog.blog_title = blogdata.blog_title;
@@ -78,7 +77,6 @@ module.exports = function(config, render, parse) {
                 }).exec();
             blog.visits++;
             blog.save();
-            console.log(blog);
             var resblog = {
                 blogId: blog._id,
                 blog_title: blog.blog_title,

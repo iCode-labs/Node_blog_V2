@@ -1,12 +1,12 @@
 module.exports = function(config) {
-    var tagmap = require('./tagmap.js'),
+    var TagMap = require('./tagmap.js'),
         _ = require('underscore'),
         mongoose = require('mongoose'),
         dateFormat = require('dateformat'),
         Blog = mongoose.model('Blog');
     return {
         inittags: function*(next) {
-            var tagsmap = new tagmap();
+            var tagsmap = new TagMap();
             var blogs =
                 yield Blog.getLatestPosts();
             blogs.forEach(function(item) {
