@@ -6,6 +6,7 @@
 	    session = require('koa-session'),
 	    favicon = require('koa-favicon'),
 	    mount = require('koa-mount');
+	var cached = require('./cached.js');
 
 	function Server(option) {
 	    this.opts = option || {};
@@ -66,6 +67,10 @@
 
 	Server.prototype.config = function() {
 
+	}
+
+	Server.prototype.initCache = function() {
+	    cached(mongoose);
 	}
 
 	Server.prototype.errHandle = function(callback) {

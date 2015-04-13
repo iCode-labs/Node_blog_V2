@@ -5,6 +5,7 @@ var server = new Server(config);
 
 server.start();
 server.connectDb();
+server.initCache();
 server.errHandle(function(err) {
     console.log("Error :" + err);
 });
