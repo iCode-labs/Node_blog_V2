@@ -1,0 +1,30 @@
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th class="info">文章名称</th>
+            <th class="info">分类</th>
+            <th class="info">状态</th>
+            <th class="info">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="blog in blogs">
+            <th><a class="btn btn-default disabled">{{blog.blog_title}}</a>
+            </th>
+            <th><a class="btn btn-primary disabled">{{blog.category}}</a>
+            </th>
+            <th>
+                <a class="btn btn-primary disabled">{{blog.status}}</a>
+            </th>
+            <th>
+                <div class="btn-group">
+                    <a class="btn btn-default" ng-click="modifyBlog(blog)">修改</a>
+                    <a class="btn btn-default" ng-click="deleteBlog(blog._id.$oid)">删除</a>
+                    <a class="btn btn-default">发布</a>
+                    <a class="btn btn-default">取消发布</a>
+                    <a class="btn btn-default">配置</a>
+                </div>
+            </th>
+        </tr>
+    </tbody>
+</table>

@@ -11,7 +11,6 @@ module.exports = function(config, render, parse) {
 
 			if ('POST' != this.method)
 				return yield next;
-
 			var parts = mutiparse(this);
 			var part;
 			while (part = yield parts) {

@@ -6,6 +6,7 @@
 	    session = require('koa-session'),
 	    favicon = require('koa-favicon'),
 	    mount = require('koa-mount');
+	var log = require('util').log;
 	var cached = require('./cached.js');
 
 	function Server(option) {
@@ -29,7 +30,7 @@
 	        this.use(logger());
 	    this.use(mount(router));
 	    this.listen(port);
-	    console.log(port);
+	    log("Server listen on "+port);
 	}
 
 	Server.prototype.connectDb = function() {
@@ -44,22 +45,22 @@
 	    mongoose.connect(this.opts.mongodb, conf);
 	    // mongoose connected 
 	    mongoose.connection.on('connected', function() {
-	        console.log('mongoose connected');
+	        log('mongoose connected');
 	    });
 	    // If the connection throws an error
 	    mongoose.connection.on('error', function(err) {
-	        console.log('mongoose default connection error: ' + err);
+	        log('mongoose default connection error: ' + err);
 	    });
 
 	    // When the connection is disconnected
 	    mongoose.connection.on('disconnected', function() {
-	        console.log('mongoose default connection disconnected');
+	        log('mongoose default connection disconnected');
 	    });
 
 	    // If the Node process ends, close the Mongoose connection
 	    process.on('SIGINT', function() {
 	        mongoose.connection.close(function() {
-	            console.log('mongoose default connection disconnected through app termination');
+	            log('mongoose default connection disconnected through app termination');
 	            process.exit(0);
 	        });
 	    });
@@ -74,7 +75,7 @@
 	}
 
 	Server.prototype.errHandle = function(callback) {
-	    this.on('error', callback);
+	    process.on('uncaughtException',callback);
 	}
 
 	exports = module.exports = Server;

@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app='blogManagePage'>
+
+<head>
+    <meta charset='utf-8' />
+    <title>blog manager</title>
+    <link rel='stylesheet' href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+    <link rel='stylesheet' href="{{url_for('static',filename='css/style.css')}}">
+</head>
+
+<body>
+    <div ng-view></div>
+    <script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/angular.min.js')}}"></script>
+    <script src="//code.angularjs.org/1.2.20/angular-route.js"></script>
+    <script src="//code.angularjs.org/1.2.13/angular-cookies.js"></script>
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/ui-bootstrap.js')}}"></script>
+    <script src="{{url_for('static',filename='js/app.js')}}"></script>
+    <script src="{{url_for('static',filename='modules/authentication/service.js')}}"></script>
+    <script src="{{url_for('static',filename='modules/authentication/controller.js')}}"></script>
+    <script src="{{url_for('static',filename='modules/main/controller.js')}}"></script>
+    <script src="{{url_for('static',filename='modules/main/service.js')}}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.01/ace.js"></script>
+    <script src="{{url_for('static',filename='js/ui-ace.js')}}"></script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="col-xs-offset-2 col-xs-8">
+        <div class="loginForm">
+            <form name="form" ng-submit="login()" role="form" class="form-horizontal">
+                <fieldset>
+                    <legend>用户登录 | blogManage</legend>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-lg-2 control-label">帐号</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputEmail" ng-model="email" required placeholder="Email">
+                            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-lg-2 control-label">密码</label>
+                        <div class="col-lg-10">
+                            <input type="password" class="form-control" id="inputPassword" ng-model="password" required placeholder="Password">
+                            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">Remember me
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="submit" class="btn btn-primary">登录</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <div ng-show="error" class="alert alert-danger">{{error}}</div>
+        </div>
+    </div>
+</div>

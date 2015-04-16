@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function() {
     var mongoose = require('mongoose'),
         Schema = mongoose.Schema,
         ObjectId = mongoose.ObjectId;

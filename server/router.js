@@ -19,6 +19,7 @@ module.exports = function(conf) {
     var index = require(conf.controller + '/index.js')(conf, render, parse),
         blog = require(conf.controller + '/blog.js')(conf, render, parse),
         file = require(conf.controller + '/file.js')(conf, render, parse);
+    var admin = require(conf.controller + '/admin.js')(conf, parse);
     //初始化middleware
     app.use(function*(next) {
         var init = require(conf.mainpath + '/common/init.js')(conf);
@@ -39,6 +40,9 @@ module.exports = function(conf) {
     //blog open API
     router.post('/pushblog', blog.pushblog);
     router.post('/updateblog', blog.updateblog);
+    //admin
+    router.get('/admin', admin.index);
+    router.post('/api/authenticate', admin.auth);
     //load router
     app.use(router.middleware());
     return app;
