@@ -1,6 +1,7 @@
 'use strict';
 
 exports = module.exports = ctrl;
+
 var log = require('util').log;
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
@@ -18,7 +19,7 @@ function ctrl(conf, parse) {
     ctrls.auth = function*(next) {
         var data =
             yield parse(this);
-        log(data);
+
         var users =
             yield User.getAccounts();
         for(var idx in users){

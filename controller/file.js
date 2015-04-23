@@ -8,7 +8,6 @@ module.exports = function(config, render, parse) {
 			this.body = fs.createReadStream(pipe);
 		},
 		uploadpic: function * (next) {
-
 			if ('POST' != this.method)
 				return yield next;
 			var parts = mutiparse(this);

@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = function(config, render, parse) {
     var mongoose = require('mongoose');
     var Blog = mongoose.model('Blog');

@@ -1,32 +1,38 @@
 'use strict';
+
 exports = module.exports = cache;
 global.mongooseCache = {};
 
-function cache(mongoose) {
-    var exec = mongoose.Query.prototype.exec;
-    var execCache = function() {
-        if (mongooseCache) {
-            var key = JSON.stringify({
-                modelnName: this.model.modelName,
-                contidions: this._conditions
-            });
+var log=require("util").log;
 
-            for (var pro in mongooseCache) {
-                if (pro === key) {
-                    var value = mongooseCache[key];
-                }
+function cache(mongoose,conf) {
+    var exec = mongoose.Query.prototype.exec;
+    conf=conf||{expire:15*60*1000,log:true};
+    var execCache = function() {
+        var key = JSON.stringify({
+            modelnName: this.model.modelName,
+            contidions: this._conditions
+        });
+        for (var pro in mongooseCache) {
+            if (pro === key) {
+                var value = mongooseCache[key];
             }
-            if (value) {
-                return Promise.resolve(value);
-            } else {
-                return exec.call(this, function(err, value) {
-                    mongooseCache[key] = value;
+        }
+        if (value) {
+            if((new Date).getTime()-value.expire>conf.expire)
+                return exec.call(this,function(err,value){
+                    if(conf.log){
+                        log('expire out of limit');
+                    }
+                    mongooseCache[key]={cvalue:value,expire:(new Date).getTime()};
                 });
+            if(conf.log){
+                log('Mongoose cached');
             }
+            return Promise.resolve(value.cvalue);
         } else {
-            global.mongooseCache = {};
             return exec.call(this, function(err, value) {
-                mongooseCache[key] = value;
+                mongooseCache[key] = {cvalue:value,expire:(new Date).getTime()};
             });
         }
     };

@@ -30,7 +30,7 @@
 	        this.use(logger());
 	    this.use(mount(router));
 	    this.listen(port);
-	    log("Server listen on "+port);
+	    log("Server listening on "+port);
 	}
 
 	Server.prototype.connectDb = function() {
@@ -72,6 +72,7 @@
 
 	Server.prototype.initCache = function() {
 	    cached(mongoose);
+	    log("Mongoose cache enabled");
 	}
 
 	Server.prototype.errHandle = function(callback) {
