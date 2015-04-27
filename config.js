@@ -2,7 +2,7 @@ var path = require('path');
 
 module.exports = function(root) {
     return {
-        mongodb: 'mongodb://106.185.54.247:27017/blogdb',
+        mongodb: 'mongodb://localhost:27017/blogdb',
         model: path.join(root, 'model'),
         view: path.join(root, 'view'),
         controller: path.join(root, 'controller'),
