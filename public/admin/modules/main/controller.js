@@ -57,7 +57,7 @@ angular.module('Main', ['ui.ace'])
                     } else {
                         MainService.updateBlog($scope.currentBlog, function(data) {
                             for (var i = 0; i < $scope.blogs.length; i++) {
-                                if ($scope.blogs[i]._id.$oid == data.blog._id.$oid) {
+                                if ($scope.blogs[i]._id == data.blog._id) {
                                     $scope.blogs[i] = data.blog;
                                     break;
                                 }
@@ -72,7 +72,7 @@ angular.module('Main', ['ui.ace'])
                 MainService.deleteBlog(blogId, function(res) {
                     if (res.success) {
                         for (var i = 0; i < $scope.blogs.length; i++) {
-                            if ($scope.blogs[i]._id.$oid == blogId) {
+                            if ($scope.blogs[i]._id == blogId) {
                                 var index = i;
                                 break;
                             }

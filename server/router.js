@@ -16,10 +16,11 @@ module.exports = function(conf) {
             require(conf.model + '/' + file)(conf);
     });
     //load controller
-    var index = require(conf.controller + '/index.js')(conf, render, parse),
-        blog = require(conf.controller + '/blog.js')(conf, render, parse),
-        file = require(conf.controller + '/file.js')(conf, render, parse);
+    var index = require(conf.controller + '/index.js')(conf, render, parse);
+    var blog = require(conf.controller + '/blog.js')(conf, render, parse);
+    var file = require(conf.controller + '/file.js')(conf, render, parse);
     var admin = require(conf.controller + '/admin.js')(conf, parse);
+    var api = require(conf.controller + '/api.js');
     //初始化middleware
     app.use(function*(next) {
         var init = require(conf.mainpath + '/common/init.js')(conf);
@@ -43,6 +44,12 @@ module.exports = function(conf) {
     //admin
     router.get('/admin', admin.index);
     router.post('/api/authenticate', admin.auth);
+    //rest api
+    router.get('/api/blogs', api.list);
+    router.get('/api/blogs/:blogId', api.getBlog);
+    router.post('/api/blogs', api.createBlog);
+    router.put('/api/blogs', api.updateBlog);
+    router.delete('/api/blogs/:blogId', api.deleteBlog);
     //load router
     app.use(router.middleware());
     return app;

@@ -35,5 +35,6 @@ function ctrl(conf, parse) {
         };
 
     };
+
     return ctrls;
 };

@@ -21,7 +21,7 @@
 	    var router = require('./router.js')(this.opts);
 
 	    this.use(session(null, this));
-	    this.use(favicon(path.join(__dirname, "public/image/favicon.ico")));
+	    this.use(favicon(path.join(__dirname, "../public/image/favicon.ico")));
 	    this.keys = [this.opts.secret] || "secret key string";
 	    this.use(staticCache(path.join(this.opts.root, 'public'), {
 	        maxAge: 365 * 24 * 60 * 60
@@ -67,13 +67,17 @@
 	}
 
 	Server.prototype.config = function() {
-
 	}
 
 	Server.prototype.initCache = function() {
 	    cached(mongoose);
 	    log("Mongoose cache enabled");
 	}
+    
+    Server.prototype.initGlobal=function(){
+        global.log=log;
+        log("initlizing global");
+    }
 
 	Server.prototype.errHandle = function(callback) {
 	    process.on('uncaughtException',callback);

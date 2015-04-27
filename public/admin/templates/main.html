@@ -1,16 +1,16 @@
-<ng-include src="'/static/templates/partials/header.html'"></ng-include>
+<ng-include src="'/admin/templates/partials/header.html'"></ng-include>
 <div class="container">
-    <ng-include src="'/static/templates/partials/confModal.html'"></ng-include>
-    <ng-include src="'/static/templates/partials/alertMsg.html'"></ng-include>
+    <ng-include src="'/admin/templates/partials/confModal.html'"></ng-include>
+    <ng-include src="'/admin/templates/partials/alertMsg.html'"></ng-include>
     <div ng-switch="bodyState">
         <div ng-switch-when="articleList">
-            <ng-include src="'/static/templates/partials/articleList.html'"></ng-include>
+            <ng-include src="'/admin/templates/partials/articleList.html'"></ng-include>
         </div>
         <div ng-switch-when="editor">
-            <ng-include src="'/static/templates/partials/mdEditor.html'"></ng-include>
+            <ng-include src="'/admin/templates/partials/mdEditor.html'"></ng-include>
         </div>
         <div ng-switch-when="config">
-            <ng-include src="'/static/templates/partials/conf.html'"></ng-include>
+            <ng-include src="'/admin/templates/partials/conf.html'"></ng-include>
         </div>
     </div>
 </div>

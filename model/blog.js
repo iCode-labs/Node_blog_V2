@@ -41,6 +41,11 @@ module.exports = function() {
     }, {
         collection: 'Blogs'
     });
+    BlogSchema.statics.getBlogById = function(id) {
+        return this.findOne({
+            "_id": id
+        }).exec();
+    }
     BlogSchema.statics.getBlogs = function() {
         return this.find().exec();
     };
@@ -68,5 +73,10 @@ module.exports = function() {
             .sort('field -create_time')
             .exec();
     };
+    BlogSchema.statics.deleteById = function(id) {
+        return this.find({
+            "_id": id
+        }).remove().exec();
+    }
     mongoose.model('Blog', BlogSchema);
 }

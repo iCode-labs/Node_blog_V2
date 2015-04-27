@@ -6,7 +6,7 @@ angular.module('Main')
             var service = {};
             service.getBlogs = function(scop) {
                 $http.get("/api/blogs").success(function(data) {
-                    scop.blogs = data.blogs;
+                    scop.blogs = data;
                 });
             };
             service.createBlog = function(blog, callback) {
