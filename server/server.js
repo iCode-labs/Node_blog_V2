@@ -8,7 +8,7 @@
 	    mount = require('koa-mount');
 	var log = require('util').log;
 	var cached = require('./cached.js');
-
+    
 	function Server(option) {
 	    this.opts = option || {};
 	}
@@ -30,7 +30,7 @@
 	        this.use(logger());
 	    this.use(mount(router));
 	    this.listen(port);
-	    log("Server listening on "+port);
+	    log("Server listening on " + port);
 	}
 
 	Server.prototype.connectDb = function() {
@@ -43,21 +43,15 @@
 	        }
 	    };
 	    mongoose.connect(this.opts.mongodb, conf);
-	    // mongoose connected 
 	    mongoose.connection.on('connected', function() {
 	        log('mongoose connected');
 	    });
-	    // If the connection throws an error
 	    mongoose.connection.on('error', function(err) {
 	        log('mongoose default connection error: ' + err);
 	    });
-
-	    // When the connection is disconnected
 	    mongoose.connection.on('disconnected', function() {
 	        log('mongoose default connection disconnected');
 	    });
-
-	    // If the Node process ends, close the Mongoose connection
 	    process.on('SIGINT', function() {
 	        mongoose.connection.close(function() {
 	            log('mongoose default connection disconnected through app termination');
@@ -66,21 +60,23 @@
 	    });
 	}
 
-	Server.prototype.config = function() {
-	}
+	Server.prototype.config = function() {}
 
 	Server.prototype.initCache = function() {
 	    cached(mongoose);
 	    log("Mongoose cache enabled");
 	}
-    
-    Server.prototype.initGlobal=function(){
-        global.log=log;
-        log("initlizing global");
-    }
+
+	Server.prototype.initGlobal = function() {
+	    global.log = log;
+        global.config=this.opts;
+        global.Database=require('./database.js');
+        log(Database);
+	    log("initlizing global");
+	}
 
 	Server.prototype.errHandle = function(callback) {
-	    process.on('uncaughtException',callback);
+	    process.on('uncaughtException', callback);
 	}
 
 	exports = module.exports = Server;

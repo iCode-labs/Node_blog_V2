@@ -6,6 +6,7 @@ module.exports = function(conf) {
         fs = require('fs'),
         parse = require('co-body'),
         router = new router();
+    var statistics=require('./statistics.js');
     //渲染模板函数
     var render = views(conf.view, {
         default: 'jade'
@@ -30,6 +31,7 @@ module.exports = function(conf) {
             yield init.initArchives();
         yield next;
     });
+    app.use(statistics());
     //配置监听函数
     router.redirect('/', '/newblogs');
     router.get('/newblogs', blog.getnews);
