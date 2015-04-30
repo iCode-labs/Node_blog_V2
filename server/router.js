@@ -6,7 +6,6 @@ module.exports = function(conf) {
         fs = require('fs'),
         parse = require('co-body'),
         router = new router();
-    var statistics=require('./statistics.js');
     //渲染模板函数
     var render = views(conf.view, {
         default: 'jade'
@@ -22,6 +21,7 @@ module.exports = function(conf) {
     var file = require(conf.controller + '/file.js')(conf, render, parse);
     var admin = require(conf.controller + '/admin.js')(conf, parse);
     var api = require(conf.controller + '/api.js');
+    var statistics=require('./statistics.js');
     //初始化middleware
     app.use(function*(next) {
         var init = require(conf.mainpath + '/common/init.js')(conf);

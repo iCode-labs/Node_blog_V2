@@ -70,7 +70,7 @@
 	Server.prototype.initGlobal = function() {
 	    global.log = log;
         global.config=this.opts;
-        global.Database=require('./database.js');
+        global.Database=require('./modelloader.js');
         log(Database);
 	    log("initlizing global");
 	}

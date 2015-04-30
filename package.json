@@ -32,7 +32,8 @@
     "marked": "*",
     "moment": "2.8.2",
     "mongoose": "*",
-    "underscore": "^1.6.0"
+    "underscore": "^1.6.0",
+    "uuid": "^2.0.1"
   },
   "engines": {
     "node": "0.11.4",
