@@ -15,7 +15,7 @@ module.exports = function(root) {
             webtitle: 'blog',
             navs: [{
                 text: '最新',
-                href: '/newblogs'
+                href: '/'
             }, {
                 text: 'Javascript',
                 href: '/category/javascript'

@@ -68,10 +68,9 @@
 	}
 
 	Server.prototype.initGlobal = function() {
-	    global.log = log;
-        global.config=this.opts;
+	    global.StdLog = log;
+        global.Conf=this.opts;
         global.Database=require('./modelloader.js');
-        log(Database);
 	    log("initlizing global");
 	}
 

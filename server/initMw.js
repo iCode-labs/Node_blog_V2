@@ -1,9 +1,8 @@
 module.exports = function(config) {
-    var TagMap = require('./tagmap.js'),
-        _ = require('underscore'),
-        mongoose = require('mongoose'),
-        dateFormat = require('dateformat'),
-        Blog = mongoose.model('Blog');
+    var TagMap = require('./tagmap.js');
+    var _ = require('underscore');
+    var dateFormat = require('dateformat');
+    var Blog = Database.models.blog;
     return {
         inittags: function*(next) {
             var tagsmap = new TagMap();

@@ -4,8 +4,7 @@ var apis = {};
 
 exports = module.exports = apis;
 
-var mongoose = require("mongoose");
-var Blog = mongoose.model("Blog");
+var Blog = Database.models.blog;
 var dateFormat = require("dateFormat");
 var parse = require("co-body");
 
@@ -42,7 +41,6 @@ apis.updateBlog = function*(next) {
     var data =
         yield parse(this);
     var origin = yield Blog.getBlogById(data._id);
-    log("enter");
     origin.blog_content = data.blog_content;
     origin.blog_title = data.blog_title;
     origin.category = data.category;
