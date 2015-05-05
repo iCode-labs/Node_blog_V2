@@ -9,19 +9,28 @@ Folder structure
 =====
 
 ```
-├── bin                 #启动脚本
-├── controller          #业务逻辑中间件
-├── model               #mongoose Schema
-├── public              #static folder
-│   ├── fonts           #字体
-│   ├── image           #图片
-│   ├── js              #js
-│   ├── stylesheets     #css
-│   └── upload          #上传文件夹
+.
+├── bin                         #启动脚本
+├── controller                  #controller
+├── model                       #model
+├── public                      #静态文件夹
+│   ├── admin                   #后台
+│   │   ├── css
+│   │   ├── js
+│   │   ├── modules
+│   │   │   ├── authentication
+│   │   │   └── main
+│   │   └── templates
+│   │       └── partials
+│   ├── css                     #css
+│   ├── fonts
+│   ├── image
+│   ├── js
+│   └── upload
 │       └── images
-├── server              #server服务端core代码
-│   └── common          #server用到的闭包代码
-└── view                #Jade模板
+├── server                      #server core
+└── view                        #Jade模板
+    ├── admin
     ├── auth
     ├── blog
     └── common
@@ -37,12 +46,7 @@ Features
 * disqus评论
 * Node 0.12 
 * mongoose mongodb ORM module
-
-Blog Manager
-=====
-
-[Blog Manager](https://github.com/flex1988/blog_manager)
-基于Flask+Angular，管理blog。
+* 后台管理基于angular.js
 
 Install
 =====
