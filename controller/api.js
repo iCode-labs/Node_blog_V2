@@ -5,7 +5,7 @@ var apis = {};
 exports = module.exports = apis;
 
 var Blog = Database.models.blog;
-var dateFormat = require("dateFormat");
+var dateFormat = require("dateformat");
 var parse = require("co-body");
 
 apis.list = function*(next) {
