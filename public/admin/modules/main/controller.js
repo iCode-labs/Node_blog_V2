@@ -14,7 +14,7 @@ angular.module('Main', ['ui.ace'])
                 $location.path('/login');
             };
             $scope.systemConf = function() {
-                $scope.bodyState = "conf";
+                $scope.bodyState = "manager";
             };
             $scope.create = function() {
                 $scope.bodyState = "editor";

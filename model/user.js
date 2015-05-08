@@ -21,7 +21,7 @@ user.Schema = {
 };
 
 user.collection = {
-    collection: 'Users'
+    collection: 'Accounts'
 };
 
 user.statics = {

@@ -8,7 +8,10 @@
 	    mount = require('koa-mount');
 	var log = require('util').log;
 	var cached = require('./cached.js');
-    
+	var routes = require('./routes.js');
+	var _ = require('underscore');
+	var R = require('koa-router');
+
 	function Server(option) {
 	    this.opts = option || {};
 	}
@@ -18,8 +21,6 @@
 
 	Server.prototype.start = function() {
 	    var port = this.opts.port || 8000;
-	    var router = require('./router.js')(this.opts);
-
 	    this.use(session(null, this));
 	    this.use(favicon(path.join(__dirname, "../public/image/favicon.ico")));
 	    this.keys = [this.opts.secret] || "secret key string";
@@ -28,7 +29,7 @@
 	    }));
 	    if (this.opts.log)
 	        this.use(logger());
-	    this.use(mount(router));
+        this.initRoutes();
 	    this.listen(port);
 	    log("Server listening on " + port);
 	}
@@ -69,9 +70,31 @@
 
 	Server.prototype.initGlobal = function() {
 	    global.StdLog = log;
-        global.Conf=this.opts;
-        global.Database=require('./modelloader.js');
+	    global.Conf = this.opts;
+	    global.Database = require('./modelloader.js');
 	    log("initlizing global");
+	}
+
+	Server.prototype.initRoutes = function() {
+	    var ctrls = require('./ctrlloader.js');
+	    var router = new R();
+	    _.each(routes, function(route) {
+	        var handle = ctrls[route.ctrl][route.handle];
+	        router[route.method](route.url, handle);
+
+	    });
+	    this.use(router.middleware());
+	}
+
+	Server.prototype.loadMiddleWare = function() {
+	    this.use(function*(next) {
+	        var init = require('./initMw.js')(Conf);
+	        this.session.tags =
+	            yield init.inittags();
+	        this.session.archives =
+	            yield init.initArchives();
+	        yield next;
+	    });
 	}
 
 	Server.prototype.errHandle = function(callback) {

@@ -1,0 +1,56 @@
+exports = module.exports = [{
+    method: 'get',
+    url: '/admin',
+    ctrl: 'admin',
+    handle: 'index'
+}, {
+    method: 'post',
+    url: '/api/authenticate',
+    ctrl: 'admin',
+    handle: 'auth'
+}, {
+    method: 'get',
+    url: '/',
+    ctrl: 'blog',
+    handle: 'getnews'
+}, {
+    method: 'get',
+    url: '/blog/:id',
+    ctrl: 'blog',
+    handle: 'getblog'
+}, {
+    method: 'get',
+    url: '/category/:category',
+    ctrl: 'blog',
+    handle: 'getblogbycategory'
+}, {
+    method: 'get',
+    url: '/api/blogs',
+    ctrl: 'api',
+    handle: 'list'
+}, {
+    method: 'get',
+    url: '/api/blogs/:blogId',
+    ctrl: 'api',
+    handle: 'getBlog'
+}, {
+    method: 'post',
+    url: '/api/blogs',
+    ctrl: 'api',
+    handle: 'createBlog'
+}, {
+    method: 'put',
+    url: '/api/blogs',
+    ctrl: 'api',
+    handle: 'updateBlog'
+}, {
+    method: 'delete',
+    url: '/api/blogs/:blogId',
+    ctrl: 'api',
+    handle: 'deleteBlog'
+}, {
+    method: 'get',
+    url: '/backup',
+    ctrl: 'file',
+    handle: 'backup'
+}]

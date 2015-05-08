@@ -9,6 +9,8 @@ server.initGlobal();
 
 server.start();
 
+server.loadMiddleWare();
+    
 server.connectDb();
 
 server.errHandle(function(err) {
