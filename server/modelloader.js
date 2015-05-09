@@ -18,6 +18,6 @@ fs.readdirSync(Conf.model).forEach(function(file) {
             modelSchema.statics[name] = method;
         });
         database.models[modelName] = mongoose.model(modelName, modelSchema);
-        StdLog("load mongoose model --> " + modelName);
+        _log("load mongoose model --> " + modelName);
     }
 });
