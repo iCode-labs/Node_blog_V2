@@ -8,7 +8,7 @@ module.exports = function(config) {
             var tagsmap = new TagMap();
             var blogs =
                 yield Blog.getLatestPosts();
-            blogs.forEach(function(item) {
+            _.each(blogs,function(item) {
                 if (!_.isNull(item.tags)) {
                     for (var i = 0; i < item.tags.length; i++) {
                         if (!tagsmap.containsKey(item.tags[i])) {

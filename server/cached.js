@@ -2,7 +2,6 @@
 
 exports = module.exports = cache;
 global.mongooseCache = {};
-
 var log = require("util").log;
 
 function cache(mongoose, conf) {

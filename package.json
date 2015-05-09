@@ -32,6 +32,7 @@
     "marked": "*",
     "moment": "2.8.2",
     "mongoose": "*",
+    "redis": "^0.12.1",
     "underscore": "^1.6.0",
     "uuid": "^2.0.1"
   },

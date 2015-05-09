@@ -20,15 +20,17 @@ exports = module.exports = ctrl;
 ctrl.getnews = function*(next) {
     var blogs =
         yield Blog.getLatestPosts();
+
     var bloglist = [];
-    blogs.forEach(function(item) {
+
+    _.each(blogs, function(item) {
         var blog = {
             blogId: item._id,
             blog_title: item.blog_title,
-            update_time: dateFormat(item.create_time.getTime(), "yyyy-mm-dd hh:MM:ss"),
             author_name: item.author,
             blog_tags: item.tags,
-            browse_times: item.visits
+            browse_times: item.visits,
+            update_time: dateFormat(new Date(item.update_time).getTime(), "yyyy-mm-dd hh:MM:ss"),
         };
         bloglist.push(blog);
     });
@@ -37,8 +39,8 @@ ctrl.getnews = function*(next) {
             config: Conf.template,
             title: '最新文章',
             articles: bloglist,
-            tags: this.session.tags,
-            archives: this.session.archives
+            tags: this.session.tags || [],
+            archives: this.session.archives || []
         });
 
 };
@@ -49,12 +51,14 @@ ctrl.getblog = function*(next) {
             "_id": this.params.id
         }).exec();
     blog.visits++;
-    blog.save();
+    var b = new Blog();
+    _.extend(b, blog);
+    b.save();
     var resblog = {
         blogId: blog._id,
         blog_title: blog.blog_title,
         blog_content: marked(blog.blog_content),
-        update_time: dateFormat(blog.update_time.getTime(), "yyyy-mm-dd hh:MM:ss"),
+        update_time: dateFormat(new Date(blog.update_time).getTime(), "yyyy-mm-dd hh:MM:ss"),
         author_name: blog.author,
         blog_tags: blog.tags,
         browse_times: blog.visits
@@ -79,7 +83,7 @@ ctrl.getblogbycategory = function*(next) {
         var blog = {
             blogId: item._id,
             blog_title: item.blog_title,
-            update_time: dateFormat(item.update_time.getTime(), "yyyy-mm-dd hh:MM:ss"),
+            update_time: dateFormat(new Date(item.update_time).getTime(), "yyyy-mm-dd hh:MM:ss"),
             author_name: item.author,
             blog_tags: item.tags,
             browse_times: item.visits
@@ -105,7 +109,7 @@ ctrl.getblogbytag = function*(next) {
         var blog = {
             blogId: item._id,
             blog_title: item.blog_title,
-            update_time: dateFormat(item.update_time.getTime(), "yyyy-mm-dd hh:MM:ss"),
+            update_time: dateFormat(new Date(item.update_time).getTime(), "yyyy-mm-dd hh:MM:ss"),
             author: item.author,
             tags: item.tags,
             browse_times: item.browse_times

@@ -7,10 +7,11 @@
 	    favicon = require('koa-favicon'),
 	    mount = require('koa-mount');
 	var log = require('util').log;
-	var cached = require('./cached.js');
+	var cached = require('./cached_redis.js');
 	var routes = require('./routes.js');
 	var _ = require('underscore');
 	var R = require('koa-router');
+	var util = require('util');
 
 	function Server(option) {
 	    this.opts = option || {};
@@ -29,7 +30,8 @@
 	    }));
 	    if (this.opts.log)
 	        this.use(logger());
-        this.initRoutes();
+	    this.initRoutes();
+        this.loadMiddleWare();
 	    this.listen(port);
 	    log("Server listening on " + port);
 	}
@@ -72,6 +74,7 @@
 	    global.StdLog = log;
 	    global.Conf = this.opts;
 	    global.Database = require('./modelloader.js');
+	    global._log = log;
 	    log("initlizing global");
 	}
 
