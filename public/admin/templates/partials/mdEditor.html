@@ -1,7 +1,7 @@
 <div class="btn-group-vertical" style="float:left;">
     <a class="btn btn-primary">发布</a>
     <a class="btn btn-primary" ng-click="saveBlog()">保存</a>
-    <a class="btn btn-primary">插入图片</a>
+    <a class="btn btn-primary" ng-click="uploadPic()">插入图片</a>
     <a data-toggle="modal" data-target="#articleModal" class="btn btn-primary">配置</a>
 </div>
 <div class="editor" ui-ace="{mode: 'markdown', theme: 'monokai',showPrintMargin:false}" ng-model="currentBlog.blog_content"></div>

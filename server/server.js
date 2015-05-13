@@ -12,6 +12,8 @@
 	var _ = require('underscore');
 	var R = require('koa-router');
 	var util = require('util');
+    var debug=require('debug')('blog:server');
+
 
 	function Server(option) {
 	    this.opts = option || {};
@@ -30,10 +32,11 @@
 	    }));
 	    if (this.opts.log)
 	        this.use(logger());
+	    this.loadMiddleWare();
 	    this.initRoutes();
-        this.loadMiddleWare();
+
 	    this.listen(port);
-	    log("Server listening on " + port);
+	    debug("Server listening on " + port);
 	}
 
 	Server.prototype.connectDb = function() {
@@ -47,17 +50,17 @@
 	    };
 	    mongoose.connect(this.opts.mongodb, conf);
 	    mongoose.connection.on('connected', function() {
-	        log('mongoose connected');
+	        debug('mongoose connected');
 	    });
 	    mongoose.connection.on('error', function(err) {
-	        log('mongoose default connection error: ' + err);
+	        debug('mongoose default connection error: ' + err);
 	    });
 	    mongoose.connection.on('disconnected', function() {
-	        log('mongoose default connection disconnected');
+	        debug('mongoose default connection disconnected');
 	    });
 	    process.on('SIGINT', function() {
 	        mongoose.connection.close(function() {
-	            log('mongoose default connection disconnected through app termination');
+	            debug('mongoose default connection disconnected through app termination');
 	            process.exit(0);
 	        });
 	    });
@@ -67,15 +70,15 @@
 
 	Server.prototype.initCache = function() {
 	    cached(mongoose);
-	    log("Mongoose cache enabled");
+	    debug("Mongoose cache enabled");
 	}
 
 	Server.prototype.initGlobal = function() {
 	    global.Conf = this.opts;
-        global._log = log;
+	    global._log = log;
 	    global.Database = require('./modelloader.js');
-	    
-	    log("initlizing global");
+
+	    debug("initlizing global");
 	}
 
 	Server.prototype.initRoutes = function() {
@@ -90,12 +93,12 @@
 	}
 
 	Server.prototype.loadMiddleWare = function() {
+	    var initMw = require('./initMw.js')();
 	    this.use(function*(next) {
-	        var init = require('./initMw.js')(Conf);
 	        this.session.tags =
-	            yield init.inittags();
+	            yield initMw.inittags();
 	        this.session.archives =
-	            yield init.initArchives();
+	            yield initMw.initArchives();
 	        yield next;
 	    });
 	}

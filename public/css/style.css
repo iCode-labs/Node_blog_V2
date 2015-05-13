@@ -106,6 +106,12 @@ nav > ul > li:hover > a > .caret {
     margin-right: 10px;
     color: #868078;
 }
+#tags {
+    max-width: 200px;
+}
+#tags a {
+    display: inline-block;
+}
 #logo {
     margin: 0 0 -7px 0;
     text-align: center;

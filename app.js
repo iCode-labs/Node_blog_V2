@@ -12,5 +12,5 @@ server.start();
 server.connectDb();
 
 server.errHandle(function(err) {
-    StdLog("Error :" + err);
+    _log(err);
 });

@@ -5,6 +5,7 @@ angular.module('Main', ['ui.ace'])
         function($scope, $location, AuthenticationService, MainService) {
             $scope.bodyState = "articleList";
             $scope.blogs = [];
+            $scope.uploads = {};
             MainService.getBlogs($scope);
             $scope.articles = function() {
                 $scope.bodyState = "articleList";
@@ -15,6 +16,12 @@ angular.module('Main', ['ui.ace'])
             };
             $scope.systemConf = function() {
                 $scope.bodyState = "manager";
+            };
+            $scope.uploadPic = function() {
+                console.log("ss");
+                if ($scope.uploads.pic) {
+                    console.log($scope.uploads.pic);
+                }
             };
             $scope.create = function() {
                 $scope.bodyState = "editor";
