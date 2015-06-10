@@ -33,7 +33,7 @@
     "marked": "*",
     "moment": "2.8.2",
     "mongoose": "*",
-    "mongoose_cache": "^1.0.1",
+    "mongoose_cache": "^1.0.2",
     "redis": "^0.12.1",
     "underscore": "^1.6.0",
     "uuid": "^2.0.1"

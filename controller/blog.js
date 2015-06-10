@@ -18,12 +18,12 @@ var ctrl = {};
 exports = module.exports = ctrl;
 
 ctrl.getnews = function*(next) {
+    
     var blogs =
         yield Blog.getLatestPosts();
-
     var bloglist = [];
 
-    _.each(blogs, function(item) {
+    blogs.forEach(function(item) {
         var blog = {
             blogId: item._id,
             blog_title: item.blog_title,
@@ -47,13 +47,10 @@ ctrl.getnews = function*(next) {
 
 ctrl.getblog = function*(next) {
     var blog =
-        yield Blog.findOne({
-            "_id": this.params.id
-        }).exec();
+        yield Blog.getBlogById(this.params.id);
     blog.visits++;
-    var b = new Blog();
-    _.extend(b, blog);
-    b.save();
+    console.log(blog.save);
+    blog.save();
     var resblog = {
         blogId: blog._id,
         blog_title: blog.blog_title,

@@ -53,11 +53,18 @@ blog.statics = {
         return this.find().exec();
     },
     getLatestPosts: function() {
+        this
+            .find()
+            .sort('field -create_time')
+            .limit(15)
+            .delcache()
+            .exec();
         return this
             .find()
             .sort('field -create_time')
             .limit(15)
             .find()
+            .cache()
             .exec();
     },
     getCategoryPosts: function(category) {

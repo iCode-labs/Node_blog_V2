@@ -12,7 +12,7 @@
 	var _ = require('underscore');
 	var R = require('koa-router');
 	var util = require('util');
-    var debug=require('debug')('blog:server');
+    var debug=require('debug')('server');
 
 
 	function Server(option) {

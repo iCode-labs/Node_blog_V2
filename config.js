@@ -26,11 +26,8 @@ module.exports = function(root) {
                 text: 'Python',
                 href: '/category/python'
             }, {
-                text: '游戏',
-                href: '/category/game'
-            }, {
-                text: '其他',
-                href: '/category/other'
+                text: '算法',
+                href: '/category/algorithm'
             }]
         }
     }
