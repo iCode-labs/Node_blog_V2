@@ -30,7 +30,7 @@ ctrl.getnews = function*(next) {
             author_name: item.author,
             blog_tags: item.tags,
             browse_times: item.visits,
-            update_time: (new Date(item.update_time - 4 * 3600 * 1000)).toLocaleTimeString()
+            update_time: (new Date(item.update_time - 4 * 3600 * 1000)).toISOString().split('.')[0]
         };
         bloglist.push(blog);
     });
@@ -55,7 +55,7 @@ ctrl.getblog = function*(next) {
         blogId: blog._id,
         blog_title: blog.blog_title,
         blog_content: marked(blog.blog_content),
-        update_time: dateFormat(new Date(blog.update_time).getTime(), "yyyy-mm-dd hh:MM:ss"),
+        update_time: (new Date(item.update_time - 4 * 3600 * 1000)).toISOString().split('.')[0],
         author_name: blog.author,
         blog_tags: blog.tags,
         browse_times: blog.visits
@@ -80,7 +80,7 @@ ctrl.getblogbycategory = function*(next) {
         var blog = {
             blogId: item._id,
             blog_title: item.blog_title,
-            update_time: dateFormat(new Date(item.update_time).getTime(), "yyyy-mm-dd hh:MM:ss"),
+            update_time: (new Date(item.update_time - 4 * 3600 * 1000)).toISOString().split('.')[0],
             author_name: item.author,
             blog_tags: item.tags,
             browse_times: item.visits
@@ -106,7 +106,7 @@ ctrl.getblogbytag = function*(next) {
         var blog = {
             blogId: item._id,
             blog_title: item.blog_title,
-            update_time: dateFormat(new Date(item.update_time).getTime(), "yyyy-mm-dd hh:MM:ss"),
+            update_time: (new Date(item.update_time - 4 * 3600 * 1000)).toISOString().split('.')[0],
             author: item.author,
             tags: item.tags,
             browse_times: item.browse_times
