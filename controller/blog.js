@@ -55,7 +55,7 @@ ctrl.getblog = function*(next) {
         blogId: blog._id,
         blog_title: blog.blog_title,
         blog_content: marked(blog.blog_content),
-        update_time: (new Date(item.update_time - 4 * 3600 * 1000)).toISOString().split('.')[0],
+        update_time: (new Date(blog.update_time - 4 * 3600 * 1000)).toISOString().split('.')[0],
         author_name: blog.author,
         blog_tags: blog.tags,
         browse_times: blog.visits
