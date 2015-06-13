@@ -18,7 +18,7 @@ var ctrl = {};
 exports = module.exports = ctrl;
 
 ctrl.getnews = function*(next) {
-    
+
     var blogs =
         yield Blog.getLatestPosts();
     var bloglist = [];
@@ -30,7 +30,7 @@ ctrl.getnews = function*(next) {
             author_name: item.author,
             blog_tags: item.tags,
             browse_times: item.visits,
-            update_time: dateFormat(new Date(item.update_time).getTime(), "yyyy-mm-dd hh:MM:ss"),
+            update_time: (new Date(item.update_time)).toLocaleString()
         };
         bloglist.push(blog);
     });
