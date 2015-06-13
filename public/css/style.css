@@ -117,7 +117,8 @@ nav > ul > li:hover > a > .caret {
     text-align: center;
 }
 .page {
-    margin: 50px 200px 0 200px;
+    max-width: 1000px;
+    margin: auto;
 }
 .blogPost {
     column-count: 2;
