@@ -30,7 +30,7 @@ ctrl.getnews = function*(next) {
             author_name: item.author,
             blog_tags: item.tags,
             browse_times: item.visits,
-            update_time: (new Date(item.update_time)).toLocaleString()
+            update_time: (new Date(item.update_time - 4 * 3600 * 1000)).toLocaleTimeString()
         };
         bloglist.push(blog);
     });
