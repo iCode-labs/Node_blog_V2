@@ -23,6 +23,9 @@ module.exports = function(root) {
                 text: 'Node.js',
                 href: '/category/nodejs'
             }, {
+                text: 'V8',
+                href: '/category/v8'
+            }, {
                 text: 'Python',
                 href: '/category/python'
             }, {
