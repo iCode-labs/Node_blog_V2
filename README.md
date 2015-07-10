@@ -1,5 +1,7 @@
 Nodejs koa MVC blog
 -----
+hexo大法好
+-----
 
 一个基于Nodejs koa的博客网站，使用MVC风格的代码架构。
 
