@@ -3,7 +3,7 @@ var Server = require(path.join(__dirname, 'server/server.js'));
 var config = require('./config.js')(__dirname);
 var server = new Server(config);
 
-server.initCache();
+//server.initCache();
 
 server.initGlobal();
 
