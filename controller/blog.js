@@ -19,8 +19,7 @@ exports = module.exports = ctrl;
 
 ctrl.getnews = function*(next) {
 
-    var blogs =
-        yield Blog.getLatestPosts();
+    var blogs = yield Blog.getLatestPosts();
     var bloglist = [];
 
     blogs.forEach(function(item) {
@@ -34,8 +33,7 @@ ctrl.getnews = function*(next) {
         };
         bloglist.push(blog);
     });
-    this.body =
-        yield render('index', {
+    this.body = yield render('index', {
             config: Conf.template,
             title: '最新文章',
             articles: bloglist,
@@ -46,10 +44,8 @@ ctrl.getnews = function*(next) {
 };
 
 ctrl.getblog = function*(next) {
-    var blog =
-        yield Blog.getBlogById(this.params.id);
+    var blog = yield Blog.getBlogById(this.params.id);
     blog.visits++;
-    console.log(blog.save);
     blog.save();
     var resblog = {
         blogId: blog._id,
@@ -61,8 +57,7 @@ ctrl.getblog = function*(next) {
         browse_times: blog.visits
     };
     if (!_.isNull(blog)) {
-        this.body =
-            yield render("/blog/article", {
+        this.body = yield render("/blog/article", {
                 config: Conf.template,
                 title: resblog.blog_title,
                 blog: resblog,
@@ -73,8 +68,7 @@ ctrl.getblog = function*(next) {
 };
 
 ctrl.getblogbycategory = function*(next) {
-    var blogs =
-        yield Blog.getCategoryPosts(this.params.category);
+    var blogs = yield Blog.getCategoryPosts(this.params.category);
     var bloglist = [];
     blogs.forEach(function(item) {
         var blog = {
@@ -87,8 +81,7 @@ ctrl.getblogbycategory = function*(next) {
         };
         bloglist.push(blog);
     });
-    this.body =
-        yield render('/index', {
+    this.body = yield render('/index', {
             config: Conf.template,
             title: this.params.category,
             articles: bloglist,
@@ -99,8 +92,7 @@ ctrl.getblogbycategory = function*(next) {
 };
 
 ctrl.getblogbytag = function*(next) {
-    var blogs =
-        yield Blog.getBlogsByTag(this.params.tag);
+    var blogs = yield Blog.getBlogsByTag(this.params.tag);
     var bloglist = [];
     blogs.forEach(function(item) {
         var blog = {
@@ -113,8 +105,7 @@ ctrl.getblogbytag = function*(next) {
         };
         bloglist.push(blog);
     });
-    this.body =
-        yield render('/index', {
+    this.body = yield render('/index', {
             config: Conf.template,
             title: this.params.category,
             articles: bloglist,

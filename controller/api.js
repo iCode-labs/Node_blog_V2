@@ -9,19 +9,16 @@ var dateFormat = require("dateformat");
 var parse = require("co-body");
 
 apis.list = function*(next) {
-    this.body =
-        yield Blog.getBlogs();
+    this.body = yield Blog.getBlogs();
 }
 
 apis.getBlog = function*(next) {
     var blogId = this.params.blogId;
-    this.body =
-        yield Blog.getBlogById(blogId);
+    this.body = yield Blog.getBlogById(blogId);
 }
 
 apis.createBlog = function*(next) {
-    var data =
-        yield parse(this);
+    var data = yield parse(this);
     var blog = new Blog();
     blog.blog_content = data.blog_content;
     blog.blog_title = data.blog_title;
@@ -38,8 +35,7 @@ apis.createBlog = function*(next) {
 }
 
 apis.updateBlog = function*(next) {
-    var data =
-        yield parse(this);
+    var data = yield parse(this);
     var origin = yield Blog.getBlogById(data._id);
     origin.blog_content = data.blog_content;
     origin.blog_title = data.blog_title;

@@ -51,9 +51,7 @@ Server.prototype.connectDb = function() {
 
 Server.prototype.config = function() {}
 
-Server.prototype.initCache = function() {
-  debug("Mongoose cache enabled");
-}
+Server.prototype.initCache = function() {}
 
 Server.prototype.initGlobal = function() {
   global.Conf = this.opts;
@@ -73,7 +71,7 @@ Server.prototype.initRoutes = function() {
 }
 
 Server.prototype.loadMiddleWare = function() {
-  var initMw = require('./initMw.js')();
+  var initMw = require('./init_middlewares.js')();
   this.use(function*(next) {
     this.session.tags = yield initMw.inittags();
     this.session.archives = yield initMw.initArchives();
